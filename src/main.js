@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./Store";
-import { Button, Cell, Tabbar, TabbarItem } from "vant";
+import { Button, Cell } from "vant";
 import VueI18n from "vue-i18n";
 import FastClick from "fastclick";
 import "./common/TollClass/resize";
@@ -26,11 +26,9 @@ if ("addEventListener" in document) {
     );
 }
 
-Vue.use(VueI18n);
-Vue.use(Button);
-Vue.use(Cell);
-Vue.use(Tabbar);
-Vue.use(TabbarItem);
+Vue.use(VueI18n)
+    .use(Button)
+    .use(Cell);
 const i18n = new VueI18n({
     locale: store.state.lang,
     messages: {
