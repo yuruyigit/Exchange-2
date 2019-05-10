@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+        />
+
+        <meta http-equiv="Pragma" content="no-cache" />
+        <!-- 用于设定禁止浏览器从本地机的缓存中调阅页面内容 -->
+
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <!-- Cache-Control指定请求和响应遵循的缓存机制。在请求消息或响应消息中设置Cache-Control并不会修改另一个消息处理过程中的缓存处理过程。 -->
+
+        <meta http-equiv="Expires" content="0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!-- 删除苹果默认的工具栏和菜单栏 -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <!-- 设置苹果工具栏颜色 -->
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+        <!-- 启用360浏览器的极速模式(webkit) -->
+        <meta name="renderer" content="webkit" />
+        <!-- 避免IE使用兼容模式 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!--
+    针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓
+  -->
+        <meta name="HandheldFriendly" content="true" />
+
+        <!-- windows phone 点击无高光 -->
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+        <script
+            type="text/javascript"
+            src="./chart_main/charting_library.min.js"
+        ></script>
+        <title>test</title>
+    </head>
+    <body>
+        <noscript>
+            <strong
+                >We're sorry but test doesn't work properly without JavaScript
+                enabled. Please enable it to continue.</strong
+            >
+        </noscript>
+        <div id="app"></div>
+        <!-- built files will be auto injected -->
+    </body>
+</html>
