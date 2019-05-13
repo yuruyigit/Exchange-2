@@ -23,9 +23,7 @@ export default {
   computed: {
     ...mapState(["tabNav"])
   },
-  created() {
-    console.log(this.tabNav);
-  },
+  created() {},
   components: {},
   methods: {
     activeIcon(id) {

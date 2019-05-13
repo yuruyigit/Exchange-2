@@ -40,12 +40,17 @@ body {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: none;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1;
     padding-bottom: env(safe-area-inset-bottom) !important;
     position: fixed;
     height: 100%;
     width: 100%;
+    color: #333;
+    .container {
+        width: 100%;
+        padding: 0 16px;
+    }
 }
 @supports (bottom: env(safe-area-inset-bottom)) {
     body {

@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view class="main"/>
+    <div class="main">
+      <transition :name="transitionName">
+        <router-view/>
+      </transition>
+    </div>
     <Footer class="footer"></Footer>
   </div>
 </template>
@@ -8,10 +12,12 @@
 import Footer from "components/Footer";
 import { mapActions } from "vuex";
 import WBT from "./common/TollClass/socket";
+import Swipe from "components/Swipe";
 export default {
   data() {
     return {
-      Socket: null
+      Socket: null,
+      transitionName: "slide-left"
     };
   },
   created() {
@@ -27,9 +33,18 @@ export default {
     }, 1000);
   },
   components: {
-    Footer
+    Footer,
+    Swipe
   },
-  methods: {}
+  methods: {},
+  watch: {
+    $route(to, from) {
+      let toName = to.name;
+      const toIndex = to.meta.id;
+      const fromIndex = from.meta.id;
+      this.transitionName = toIndex < fromIndex ? "slide-right" : "slide-left";
+    }
+  }
 };
 </script>
 
@@ -40,6 +55,27 @@ export default {
   flex-direction: column;
   .main {
     flex: 1;
+    .slide-right-enter-active, .slide-right-leave-active, .slide-left-enter-active, .slide-left-leave-active {
+      will-change: transform;
+      transition: all 500ms;
+      position: absolute;
+    }
+    .slide-right-enter {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    .slide-right-leave-active {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+    .slide-left-enter {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+    .slide-left-leave-active {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
   }
 }
 </style>

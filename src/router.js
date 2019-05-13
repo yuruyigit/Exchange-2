@@ -52,7 +52,6 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.id)) {
         store.commit("setTabNav", to.meta.id);
     }
-    console.log(to,to.meta.id)
     next();
 });
 
