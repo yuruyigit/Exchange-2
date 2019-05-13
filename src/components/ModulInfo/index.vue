@@ -63,7 +63,7 @@ export default {
         display: inline-block;
         width: 4px;
         height: 4px;
-        background-color: #ff0000;
+        background-color: $red;
         border-radius: 2px;
         right: -2px;
         top: -2px;
@@ -80,7 +80,7 @@ export default {
       }
       &_bot {
         font-size: 10px;
-        color: #cecece;
+        color: $color12;
       }
     }
   }
