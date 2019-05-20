@@ -1,0 +1,241 @@
+@import '~assets/stylus/variable';
+.home {
+    background-color: $bgMain;
+    &_top {
+        background-color: $write;
+        padding-bottom: 12px;
+        // HomeHead
+        .header {
+            height: 64px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .group {
+                height: 64px;
+                display: flex;
+                align-items: center;
+                &_avatar {
+                    border: 2px solid $blue;
+                    border-radius: 50%;
+                    width: 36px;
+                    height: 36px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &_notLogin {
+                    margin-left: 10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+            }
+            .right {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                img {
+                    width: 24px;
+                    margin-right: 4px;
+                }
+                &_size {
+                    font-size: 15px;
+                    color: $color6;
+                }
+            }
+        }
+        // Swipe
+        .swipe {
+            position: relative;
+            &-wrap {
+                width: 100%;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        // ModulInfo
+        .modulInfo {
+            display: flex;
+            height: 64px;
+            align-items: center;
+            justify-content: space-between;
+            .single {
+                display: flex;
+                .Icon {
+                    position: relative;
+                    margin-right: 6px;
+                    img {
+                        width: 32px;
+                    }
+                    span {
+                        position: absolute;
+                        display: inline-block;
+                        width: 4px;
+                        height: 4px;
+                        background-color: $red;
+                        border-radius: 2px;
+                        right: -2px;
+                        top: -2px;
+                    }
+                }
+                .size {
+                    display: flex;
+                    flex-direction: column;
+                    height: 30px;
+                    justify-content: space-between;
+                    &_top {
+                        font-size: 14px;
+                        color: $color3;
+                    }
+                    &_bot {
+                        font-size: 10px;
+                        color: $color12;
+                    }
+                }
+            }
+        }
+        // Notice
+        .notice {
+            width: 100%;
+            height: 28px;
+            border-radius: 2px;
+            background-color: $bgMain;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 0 10px;
+            .icon {
+                width: 20px;
+                margin-right: 8px;
+            }
+        }
+        // Coin
+        .coin {
+            display: flex;
+            justify-content: space-between;
+            height: 64px;
+            padding: 0 4px;
+            &_single {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+                .trade {
+                    font-size: 14px;
+                    color: @color3;
+                    font-weight: 700;
+                }
+                .dollar {
+                    font-size: 14px;
+                }
+                .rate {
+                    font-size: 10px;
+                }
+                .cny {
+                    color: $color9;
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+    // Legal
+    .legal {
+        height: 108px;
+        margin-top: 10px;
+        padding: 12px 0 16px 16px;
+        background-color: $write;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &_left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 80px;
+            h2 {
+                font-size: 16px;
+            }
+            .size {
+                color: $color9;
+                font-size: 12px;
+            }
+            .legal_btn {
+                width: 104px;
+                height: 30px;
+                background: url('../../assets/Images/home/bg_btn.png') no-repeat center;
+                background-size: 100% 100%;
+                color: $write;
+                font-size: 14px;
+                line-height: 30px;
+                text-align: center;
+                img {
+                    width: 6px;
+                }
+            }
+        }
+        &_right {
+            width: 180px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .news {
+        background-color: $write;
+        margin-top: 10px;
+        padding: 12px 16px;
+        &_top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            &_left {
+                padding-top: 10px;
+                h2 {
+                    font-size: 16px;
+                    margin-bottom: 12px;
+                }
+                .size {
+                    color: $color9;
+                    font-size: 12px;
+                }
+            }
+            &_right {
+                width: 106px;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        &_bot {
+            display: flex;
+            justify-content: space-between;
+            &_single {
+                width: 168px;
+                height: 64px;
+                background-color: $bgMain;
+                border-radius: 2px;
+                padding: 0 16px 0 12px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .left {
+                    h3 {
+                        font-size: 14px;
+                        color: $color3;
+                        margin-bottom: 10px;
+                    }
+                    p {
+                        font-size: 13px;
+                        color: $color12;
+                    }
+                }
+                .right_icon {
+                    width: 40px;
+                }
+            }
+        }
+    }
+}

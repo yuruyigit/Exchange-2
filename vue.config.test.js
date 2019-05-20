@@ -13,6 +13,11 @@ const pxtorem = require("postcss-pxtorem");
 module.exports = {
     publicPath: "./", // 默认'/'，部署应用包时的基本 URL
     outputDir: "dist", // 'dist', 生产环境构建文件的目录
+    // assetsDir: "", // 相对于outputDir的静态资源(js、css、img、fonts)目录
+    // lintOnSave: false,
+    // runtimeCompiler: true, // 是否使用包含运行时编译器的 Vue 构建版本
+    // productionSourceMap: false, // 生产环境的 source map
+    // transpileDependencies: [/node_modules[/\\\\]vuetify[/\\\\]/],
     // CSS 相关选项
     css: {
         // 将组件内的 CSS 提取到一个单独的 CSS 文件 (只用在生产环境中)
@@ -46,6 +51,8 @@ module.exports = {
                 ]
             }
         },
+
+        // 为所有的 CSS 及其预处理文件开启 CSS Modules。
         // 这个选项不会影响 `*.vue` 文件。
         modules: false
     },
@@ -55,6 +62,14 @@ module.exports = {
     parallel: require("os").cpus().length > 1,
 
     chainWebpack: config => {
+        // // 修复HMR
+        // config.resolve.symlinks(true);
+        // //修复 Lazy loading routes Error
+        // config.plugin("html").tap(args => {
+        //     args[0].chunksSortMode = "none";
+        //     return args;
+        // });
+
         // 添加别名
         config.resolve.alias
             .set("@", resolve("src"))
@@ -64,6 +79,19 @@ module.exports = {
             .set("components", resolve("src/components"))
             .set("lang", resolve("src/lang"))
             .set("views", resolve("src/views"));
+
+        //压缩图片
+        // config.module
+        //     .rule("images")
+        //     .use("image-webpack-loader")
+        //     .loader("image-webpack-loader")
+        //     .options({
+        //         mozjpeg: {progressive: true, quality: 65},
+        //         optipng: {enabled: false},
+        //         pngquant: {quality: "65-90", speed: 4},
+        //         gifsicle: {interlaced: false},
+        //         webp: {quality: 75}
+        //     });
     },
     configureWebpack: config => {
         if (IS_PROD) {
@@ -86,6 +114,16 @@ module.exports = {
                     parallel: true
                 })
             );
+            plugins.push(
+                new CompressionWebpackPlugin({
+                    filename: "[path].gz[query]",
+                    algorithm: "gzip",
+                    test: productionGzipExtensions,
+                    threshold: 10240,
+                    minRatio: 0.8
+                })
+            );
+
             //去掉 console.log
             plugins.push(
                 new UglifyJsPlugin({
@@ -103,5 +141,24 @@ module.exports = {
             );
             config.plugins = [...config.plugins, ...plugins];
         }
+
+        // 打包分析
+        // if (process.env.IS_ANALYZ) {
+        //     config.plugin("webpack-report").use(BundleAnalyzerPlugin, [
+        //         {
+        //             analyzerMode: "static"
+        //         }
+        //     ]);
+        // }
+
+        // //配置 externals
+        // //防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
+        // config.externals = {
+        //     vue: "Vue",
+        //     "element-ui": "ELEMENT",
+        //     "vue-router": "VueRouter",
+        //     vuex: "Vuex",
+        //     axios: "axios"
+        // };
     }
 };

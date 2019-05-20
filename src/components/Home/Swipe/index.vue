@@ -31,15 +31,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="stylus">
-.swipe {
-  position: relative;
-  &-wrap {
-    width: 100%;
-    img {
-      width: 100%;
-    }
-  }
-}
-</style>

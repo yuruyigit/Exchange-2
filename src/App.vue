@@ -5,14 +5,13 @@
         <router-view/>
       </transition>
     </div>
-    <Footer class="footer"></Footer>
+    <router-view name="mainfooter"></router-view>
   </div>
 </template>
 <script>
 import Footer from "components/Footer";
 import { mapActions } from "vuex";
 import WBT from "./common/TollClass/socket";
-import Swipe from "components/Swipe";
 export default {
   data() {
     return {
@@ -33,8 +32,7 @@ export default {
     }, 1000);
   },
   components: {
-    Footer,
-    Swipe
+    Footer
   },
   methods: {},
   watch: {
@@ -54,6 +52,7 @@ export default {
   display: flex;
   flex-direction: column;
   .main {
+    overflow-y: auto;
     flex: 1;
     .slide-right-enter-active, .slide-right-leave-active, .slide-left-enter-active, .slide-left-leave-active {
       will-change: transform;

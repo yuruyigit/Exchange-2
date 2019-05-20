@@ -1,18 +1,22 @@
-placeholderColor($color) {
+placeholderColor($color, $size = 16px) {
     &::-webkit-input-placeholder {
         color: $color;
+        font-size: $size;
     }
     &::-moz-placeholder {
         /* Mozilla Firefox 19+ */
         color: $color;
+        font-size: $size;
     }
     &::-moz-placeholder {
         /* Mozilla Firefox 4 to 18 */
         color: $color;
+        font-size: $size;
     }
     &::-ms-input-placeholder {
         /* Internet Explorer 10-11 */
         color: $color;
+        font-size: $size;
     }
 }
 // 不换行
@@ -29,18 +33,19 @@ text-hid($num) {
     -webkit-line-clamp: $num;
     overflow: hidden;
 }
-// text-hid($h, $ah)
-// position: relative
-// line-height: $h
-// height: $ah
-// overflow: hidden
-// &::after
-// content: " "
-// position: absolute;
-// bottom: 0
-// right: 0
-// padding-left: 40px
-
+text-hid($h, $ah) {
+    position: relative;
+    line-height: $h;
+    height: $ah;
+    overflow: hidden;
+    &:after {
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding-left: 40px;
+    }
+}
 // 扩展点击区域
 extend-click() {
     position: relative;
@@ -51,21 +56,6 @@ extend-click() {
         left: -9px;
         right: -9px;
         bottom: -9px;
-    }
-}
-// hover-border
-after-border($w) {
-    position: relative;
-    &::after {
-        content: ' ';
-        position: absolute;
-        bottom: 1px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: $w;
-        height: 3px;
-        background-color: $main-color;
-        border-radius: calc((3px / 2));
     }
 }
 after-borderTab($w) {
@@ -81,25 +71,30 @@ after-borderTab($w) {
         border-radius: 2px;
     }
 }
-main-radius() {
-    background: #fff;
-    border-radius: 6px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-// 移入变手
-hover-hand() {
-    cursor: pointer;
+line-1px($color, $h, $l = 0) {
+    position: relative;
+    &:after {
+        display: block;
+        position: absolute;
+        content: ' ';
+        width: 1px;
+        height: $h;
+        top: 50%;
+        left: $l;
+        background-color: $color;
+        transform: translateY(-50%);
+    }
 }
 // 1px像素border
-border-1px($color, $string = 0) {
+border-1px($color, $pos = 0) {
     position: relative;
     &:after {
         display: block;
         position: absolute;
         left: 0;
-        top: $string;
+        top: $pos;
         width: 100%;
-        border-top: 1px solid $color;
+        border-bottom: 1px solid $color;
         content: ' ';
     }
 }

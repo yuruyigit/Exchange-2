@@ -7,15 +7,7 @@ import VueI18n from "vue-i18n";
 import FastClick from "fastclick";
 import "./common/TollClass/resize";
 import "./assets/stylus/reset.styl";
-FastClick.prototype.onTouchEnd = function(event) {
-    if (
-        event.target.hasAttribute("type") &&
-        event.target.getAttribute("type") == "text"
-    ) {
-        event.preventDefault();
-        return false;
-    }
-};
+FastClick.prototype.onTouchEnd = function(event) {};
 if ("addEventListener" in document) {
     document.addEventListener(
         "DOMContentLoaded",
