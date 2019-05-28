@@ -1,0 +1,276 @@
+@import '~assets/stylus/variable';
+.disciple {
+  background-color: $colorE;
+  width: 100%;
+  &_top {
+    position: relative;
+    background: url('../../../assets/Images/disciple/top_bg.png') $write no-repeat top / 100% 176px;
+    .title {
+      width: 100%;
+      text-align: center;
+      padding-top: 40px;
+      .tips {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 12px;
+      }
+      .price {
+        color: $write;
+        font-size: 32px;
+        margin-bottom: 24px;
+      }
+    }
+    .wrap {
+      width: 343px;
+      height: 138px;
+      background-color: $write;
+      margin: auto;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      padding: 14px 18px;
+      &_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &_l {
+          display: flex;
+          align-items: center;
+          .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-right: 12px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .msg_group {
+            .name {
+              font-size: 15px;
+              margin-bottom: 8px;
+            }
+            .icon {
+              width: 64px;
+              img {
+                width: 100%;
+              }
+            }
+          }
+        }
+        .btn_apprentice {
+          width: 92px;
+          height: 34px;
+          background: url('../../../assets/Images/disciple/bg_btn1.png') no-repeat center / cover;
+          border: none;
+          color: $write;
+          font-size: 14px;
+        }
+      }
+      &_info {
+        display: flex;
+        height: 44px;
+        margin-top: 14px;
+        &_single {
+          width: 50%;
+          text-align: center;
+          &:last-child {
+            line-1px($colorE, 32px, 1px);
+          }
+          p {
+            &:first-child {
+              font-size: 24px;
+              color: $color3;
+              padding-bottom: 8px;
+            }
+            &:last-child {
+              font-size: 12px;
+              color: $color9;
+            }
+          }
+        }
+      }
+    }
+    .banner {
+      margin: 0 auto;
+      padding: 16px 0;
+      width: 334px;
+      img {
+        width: 100%;
+      }
+    }
+    .back_left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 46px;
+      width: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color6;
+      cursor: pointer;
+      .back_icon {
+        font-size: 20px;
+      }
+    }
+  }
+  &_wrap {
+    background-color: $write;
+    margin-top: 8px;
+    padding: 16px;
+    &_title {
+      font-size: 16px;
+      color: $color3;
+      line-height: 20px;
+      img {
+        margin-right: 10px;
+        width: 20px;
+      }
+    }
+    .code_wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 0;
+      img {
+        width: 156px;
+        height: 156px;
+        margin-bottom: 24px;
+      }
+      button {
+        width: 138px;
+        height: 34px;
+        background: url('../../../assets/Images/disciple/bg_btn2.png') no-repeat center / cover;
+        border: none;
+        color: $write;
+        font-size: 15px;
+      }
+    }
+    .explain {
+      width: 100%;
+      padding: 18px 0;
+      &_top {
+        height: 164px;
+        width: 100%;
+        position: relative;
+        color: $write;
+        .bg1 {
+          position: absolute;
+          bottom: 0;
+          left: 2px;
+          width: 349px;
+          height: 164px;
+          padding: 8px;
+          background: url('../../../assets/Images/disciple/bg_1.png') no-repeat center / cover;
+          &_left {
+            position: absolute;
+            bottom: 20px;
+            left: 34px;
+            font-size: 18px;
+            height: 50px;
+            p {
+              &:first-child {
+                margin-bottom: 14px;
+              }
+            }
+          }
+          &_right {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 14px;
+            line-height: 16px;
+            img {
+              width: 16px;
+              margin-left: 8px;
+            }
+          }
+        }
+        .bg2 {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 244px;
+          height: 76px;
+          padding: 10px;
+          background: url('../../../assets/Images/disciple/bg_2.png') no-repeat center / cover;
+          &_left {
+            padding: 2px;
+            p {
+              &:first-child {
+                font-size: 12px;
+                padding-bottom: 12px;
+              }
+              &:last-child {
+                font-size: 28px;
+              }
+            }
+          }
+          &_btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 52px;
+            height: 18px;
+            font-size: 11px;
+            border-radius: 9px;
+            background-color: #b79361;
+            border: none;
+          }
+        }
+      }
+      &_introd {
+        font-size: 15px;
+        line-height: 28px;
+        color: $color3;
+        padding-top: 16px;
+        li {
+          padding-bottom: 10px;
+          position: relative;
+          padding-left: 20px;
+          img {
+            position: absolute;
+            width: 16px;
+            left: 0;
+            top: 6px;
+          }
+        }
+      }
+      &_rule {
+        font-size: 13px;
+        color: $color6;
+        line-height: 28px;
+        padding-bottom: 16px;
+      }
+      &_table {
+        width: 100%;
+        li {
+          display: flex;
+          height: 34px;
+          font-size: 13px;
+          text-align: center;
+          background-color: #e7d5b8;
+          border-bottom: 1px solid $write;
+          color: #7c5f37;
+          &.title {
+            background-color: #c8a068;
+            color: $write;
+          }
+          p {
+            line-height: 32px;
+            &:first-child {
+              width: 96px;
+            }
+            &:last-child {
+              flex: 1;
+              border-left: 1px solid $write;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -12,12 +12,12 @@
 <script>
 import icon_home from "Images/footer/home.png";
 import icon_home_a from "Images/footer/home_active.png";
-import navList from "common/tabNav";
+import { navList } from "common/staticData";
 import { mapState } from "vuex";
 export default {
   data() {
     return {
-      navList: navList.nav
+      navList: navList
     };
   },
   computed: {
@@ -27,7 +27,12 @@ export default {
   components: {},
   methods: {
     activeIcon(id) {
-      return tabNav == id ? item.active : item.normal;
+      if (tabNav >= id || tabNav < id + 1) {
+        return true;
+      } else {
+        return false;
+      }
+      // return tabNav == id ? item.active : item.normal;
     }
   }
 };
@@ -37,6 +42,7 @@ export default {
 @import '~assets/stylus/variable.styl';
 .footer {
   height: 50px;
+  background-color: $write;
   border-1px(#999);
   .footer_list {
     display: flex;

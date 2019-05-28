@@ -30,7 +30,6 @@ module.exports = {
                     red: "#03a9f4",
                     blue: "#3eaf7c",
                     orange: "#ff0000",
-                    "text-color": "#111"
                 }
             },
             postcss: {

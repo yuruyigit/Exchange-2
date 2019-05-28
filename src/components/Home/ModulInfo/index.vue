@@ -1,6 +1,6 @@
 <template>
   <ul class="modulInfo">
-    <li class="single">
+    <router-link tag="li" to="/hot" class="single">
       <p class="Icon">
         <img src="~assets/Images/home/icon_hot.png" alt>
         <span></span>
@@ -9,8 +9,8 @@
         <span class="size_top">{{$t('hotActvitity')}}</span>
         <span class="size_bot">Pop activities</span>
       </p>
-    </li>
-    <li class="single">
+    </router-link>
+    <router-link tag="li" to="/guide" class="single">
       <p class="Icon">
         <img src="~assets/Images/home/icons_newUser.png" alt>
         <span></span>
@@ -19,7 +19,7 @@
         <span class="size_top">{{$t('mewUser')}}</span>
         <span class="size_bot">Novice guide</span>
       </p>
-    </li>
+    </router-link>
     <router-link tag="li" to="/disciple" class="single">
       <p class="Icon">
         <img src="~assets/Images/home/icons_disciple.png" alt>

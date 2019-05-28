@@ -7,6 +7,7 @@
     outline: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
 }
 a, a:active, a:focus, a:hover, a:visited {
     text-decoration: none;
@@ -15,7 +16,7 @@ a, a:active, a:focus, a:hover, a:visited {
 }
 a, img {
     -webkit-touch-callout: none;
-    vertical-align: middle;
+    vertical-align: top;
 }
 ol, ul {
     list-style: none;
@@ -53,6 +54,17 @@ body {
         padding-right: 16px;
     }
 }
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+button {
+    border: none;
+    background-color: transparent;
+    line-height: normal;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
 button, a, input[button] {
     cursor: pointer;
 }
@@ -85,6 +97,9 @@ li {
 }
 .color-red {
     color: #f92a21;
+}
+.color-red1 {
+    color: #FE5951;
 }
 .color-green {
     color: #1dbc8c;

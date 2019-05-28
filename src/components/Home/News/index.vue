@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <div class="news_top">
+    <router-link to="/news" tag="div" class="news_top">
       <div class="news_top_left">
         <h2>
           <span>行业</span>
@@ -11,7 +11,7 @@
       <div class="news_top_right">
         <img src="~assets/Images/home/banner.png" alt>
       </div>
-    </div>
+    </router-link>
     <div class="news_bot">
       <div class="news_bot_single">
         <div class="left">

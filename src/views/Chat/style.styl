@@ -1,0 +1,138 @@
+@import '~assets/stylus/variable';
+.chat {
+    width: 100%;
+    background-color: $bgMain;
+    .slide-right-enter-active, .slide-right-leave-active, .slide-left-enter-active, .slide-left-leave-active {
+        will-change: transform;
+        transition: all 500ms;
+        position: absolute;
+    }
+    .slide-right-enter {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+    .slide-right-leave-active {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+    .slide-left-enter {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+    .slide-left-leave-active {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+    &_wrap {
+        height: calc(100vh - 96px);
+        display: flex;
+        flex-direction: column;
+        &_top {
+            height: 234px;
+            padding: 16px 20px 0 20px;
+            background-color: $write;
+            .card {
+                width: 100%;
+                height: 130px;
+                background: url('../../assets/Images/chat/bg_card.png') no-repeat center / cover;
+                padding-top: 14px;
+                &_size {
+                    height: 68px;
+                    text-align: center;
+                    p {
+                        font-size: 20px;
+                        color: $write;
+                        &:last-child {
+                            font-size: 32px;
+                            padding-top: 12px;
+                        }
+                    }
+                }
+                &_btn {
+                    text-align: center;
+                    padding-top: 6px;
+                    button {
+                        width: 106px;
+                        height: 28px;
+                        background-color: $write;
+                        border-radius: 14px;
+                        color: #ff6055;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .list {
+                height: 88px;
+                padding-top: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                li {
+                    width: 33%;
+                    p {
+                        text-align: center;
+                        font-size: 13px;
+                        color: $color3;
+                        &:last-child {
+                            margin-top: 13px;
+                            color: $red1;
+                            font-size: 24px;
+                        }
+                    }
+                }
+            }
+        }
+        &_info {
+            flex: 1;
+            margin-top: 10px;
+            background-color: $write;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            justify-content: space-between;
+            .tabs {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                &_wrap {
+                    display: flex;
+                    justify-content: space-between;
+                    li {
+                        width: 33%;
+                        height: 50px;
+                        &.active {
+                            position: absolute;
+                            width: 33%;
+                            height: 2px;
+                            background: linear-gradient(#2db5ff, #2c68fc);
+                            left: 0;
+                            bottom: 0;
+                        }
+                        p {
+                            width: 100%;
+                            height: 50px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 16px;
+                            color: $color3;
+                        }
+                    }
+                }
+                &_line {
+                    transition-duration: 0.3s;
+                    position: absolute;
+                    width: 33%;
+                    height: 2px;
+                    background: linear-gradient(#2db5ff, #2c68fc);
+                    left: 0;
+                    bottom: 0;
+                }
+            }
+            .cont {
+                overflow-y: auto;
+                height: calc(100% - 60px);
+            }
+        }
+    }
+}

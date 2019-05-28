@@ -1,0 +1,46 @@
+@import '~assets/stylus/variable';
+.asked {
+  width: 100%;
+  .asked_list {
+    .van-cell {
+      color: $color3;
+      font-size: 15px;
+      padding: 14px 15px;
+      &:after {
+        display: none;
+      }
+      &__title {
+        span {
+          position: relative;
+          z-index: 2;
+          &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 12px;
+            background-color: $blue;
+            bottom: 0;
+            left: 0;
+            opacity: 0.1;
+            z-index: 1;
+          }
+        }
+      }
+    }
+    .van-collapse-item__content {
+      width: 100%;
+      background-color: $bgMain;
+      border-radius: 2px;
+      color: $color6;
+      p {
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 24px;
+        padding: 0 14px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

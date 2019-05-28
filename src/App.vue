@@ -2,7 +2,7 @@
   <div id="app">
     <div class="main">
       <transition :name="transitionName">
-        <router-view/>
+        <router-view class="main_wrapper"/>
       </transition>
     </div>
     <router-view name="mainfooter"></router-view>
@@ -54,6 +54,9 @@ export default {
   .main {
     overflow-y: auto;
     flex: 1;
+    &_wrapper {
+      width: 100%;
+    }
     .slide-right-enter-active, .slide-right-leave-active, .slide-left-enter-active, .slide-left-leave-active {
       will-change: transform;
       transition: all 500ms;

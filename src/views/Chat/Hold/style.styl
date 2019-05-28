@@ -1,0 +1,80 @@
+@import '~assets/stylus/variable';
+.hold {
+    width: 100%;
+    padding: 16px 20px;
+    &_single {
+        width: 100%;
+        height: 92px;
+        background-color: $write;
+        box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 10px 16px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        .top {
+            height: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &_l {
+                display: flex;
+                align-items: flex-end;
+                color: $color3;
+                font-size: 13px;
+                height: 18px;
+                .big {
+                    font-size: 16px;
+                    margin-right: 6px;
+                }
+                .small {
+                    color: $color9;
+                    margin-right: 4px;
+                }
+                .icon {
+                    width: 13px;
+                    height: 12px;
+                    margin-right: 3px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            &_btn {
+                display: flex;
+                align-items: center;
+                font-size: 13px;
+                button {
+                    width: 44px;
+                    height: 18px;
+                    // background: url('../../assets/Images/chat/bg_card.png') no-repeat center / cover;
+                    border-radius: 9px;
+                    background: linear-gradient(left, #ff9273, #ff5500);
+                    font-size: 12px;
+                    color: $write;
+                    margin-left: 10px;
+                    extend-click();
+                }
+            }
+        }
+        .bot {
+            display: flex;
+            p {
+                width: 25%;
+                text-align: center;
+                span {
+                    display: block;
+                    font-size: 13px;
+                    color: $color3;
+                    &:last-child {
+                        margin-top: 10px;
+                        font-size: 12px;
+                        color: $color9;
+                    }
+                }
+            }
+        }
+    }
+}

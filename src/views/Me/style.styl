@@ -1,0 +1,157 @@
+@import '~assets/stylus/variable.styl';
+$bgColor = #00b4df;
+.me {
+    width: 100%;
+    background-color: $bgMain;
+    &_top {
+        height: 162px;
+        width: 100%;
+        background-color: $bgColor;
+        position: relative;
+        padding: 0 20px;
+        &_title {
+            font-size: 18px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $write;
+        }
+        &_info {
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            width: calc(100% - 40px);
+            height: 88px;
+            background-color: $write;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 20px;
+            .left {
+                display: flex;
+                align-items: center;
+                &_avatar {
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 22px;
+                    overflow: hidden;
+                    margin-right: 10px;
+                    img {
+                        width: 100%;
+                    }
+                }
+                &_user {
+                    height: 44px;
+                    padding: 2px;
+                    p {
+                        font-size: 18px;
+                        color: $color3;
+                        &:last-child {
+                            font-size: 14px;
+                            color: $color9;
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
+            .right {
+                width: 92px;
+                height: 26px;
+                &_btn {
+                    width: 100%;
+                    height: 100%;
+                    background-color: $bgColor;
+                    border-radius: 13px 0 0 13px;
+                    color: $write;
+                    font-size: 12px;
+                }
+            }
+        }
+        .back_left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 76px;
+            width: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $color6;
+            cursor: pointer;
+            .back_icon {
+                font-size: 20px;
+            }
+        }
+    }
+    &_cont {
+        height: 158px;
+        width: 100%;
+        background-color: $write;
+        padding: 8px 40px;
+        margin-bottom: 10px;
+        &_top {
+            .title {
+                font-size: 14px;
+                color: #aaa;
+                margin-bottom: 12px;
+            }
+            .num {
+                font-size: 30px;
+                color: $color3;
+                // font-weight: 700;
+            }
+        }
+        &_btn {
+            margin-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            button {
+                width: 132px;
+                height: 36px;
+                font-size: 16px;
+                color: $blue;
+                border-radius: 18px;
+                border: 1px solid $blue;
+                &:first-child {
+                    background-color: $blue;
+                    color: $write;
+                }
+            }
+        }
+    }
+    &_list {
+        width: 100%;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        background-color: $write;
+        .van-cell {
+            font-size: 16px;
+            color: $color3;
+            padding: 13px 20px 13px 0;
+            &:after {
+                left: 32px;
+                border-bottom: 1px solid $colorE;
+            }
+            &:last-child {
+                &:after {
+                    content: ' ';
+                    position: absolute;
+                    pointer-events: none;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                    right: 0;
+                    bottom: 0;
+                    -webkit-transform: scaleY(0.5);
+                    transform: scaleY(0.5);
+                }
+            }
+            .icon_img {
+                width: 20px;
+                height: 20px;
+                margin-right: 12px;
+            }
+        }
+    }
+}
