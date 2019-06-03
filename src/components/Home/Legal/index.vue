@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="legal_right">
-      <img src="~assets/Images/home/banner.png" alt>
+      <img src="~assets/Images/home/Bitmap.png" alt>
     </div>
   </div>
 </template>

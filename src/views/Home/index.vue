@@ -22,6 +22,7 @@ import Coin from "components/Home/Coin";
 import Legal from "components/Home/Legal";
 import News from "components/Home/News";
 import Tips from "components/Tips";
+import Axios from "axios";
 export default {
   data() {
     return {};
@@ -36,7 +37,21 @@ export default {
     News,
     Tips
   },
-  methods: {}
+  created() {
+    this.getBanner();
+  },
+  methods: {
+    getBanner() {
+      Axios({
+        url: "/v1/banner/",
+        method: "get",
+        baseURL: "https://web.mt1733.com",
+        params: { type: 2 }
+      }).then(res => {
+        console.log(res);
+      });
+    }
+  }
 };
 </script>
 <style lang='stylus'>

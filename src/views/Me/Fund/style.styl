@@ -1,0 +1,38 @@
+@import '~assets/stylus/variable.styl';
+.fund {
+    &_list {
+        &_single {
+            height: 86px;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-1px($colorE, 100%);
+            .left {
+                &_title {
+                    margin-bottom: 6px;
+                    span {
+                        &:first-child {
+                            font-size: 16px;
+                            color: $color3;
+                        }
+                        &:last-child {
+                            font-size: 14px;
+                        }
+                    }
+                }
+                &_shops, &_time {
+                    font-size: 12px;
+                    color: $color9;
+                }
+                &_shops {
+                    margin-bottom: 6px;
+                }
+            }
+            .right {
+                font-size: 20px;
+                color: $color6;
+            }
+        }
+    }
+}

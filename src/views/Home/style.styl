@@ -1,5 +1,6 @@
 @import '~assets/stylus/variable';
 .home {
+    height: 100%;
     background-color: $bgMain;
     &_top {
         background-color: $write;
@@ -18,17 +19,38 @@
                 &_avatar {
                     border: 2px solid $blue;
                     border-radius: 50%;
-                    width: 36px;
-                    height: 36px;
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 10px;
                     img {
                         width: 100%;
                         height: 100%;
                     }
                 }
                 &_notLogin {
-                    margin-left: 10px;
                     font-size: 16px;
                     cursor: pointer;
+                }
+                &_login {
+                    .balance {
+                        font-size: 18px;
+                        margin-bottom: 6px;
+                        img {
+                            width: 12px;
+                            margin-left: 12px;
+                        }
+                        &_bot {
+                            font-size: 12px;
+                            color: $blue;
+                        }
+                    }
+                }
+                &_icon {
+                    width: 12px;
+                    margin-left: 12px;
+                    img {
+                        width: 100%;
+                    }
                 }
             }
             .right {
@@ -144,7 +166,7 @@
     .legal {
         height: 108px;
         margin-top: 10px;
-        padding: 12px 0 16px 16px;
+        padding: 0 0 0 16px;
         background-color: $write;
         display: flex;
         justify-content: space-between;
@@ -162,20 +184,22 @@
                 font-size: 12px;
             }
             .legal_btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 width: 104px;
                 height: 30px;
                 background: url('../../assets/Images/home/bg_btn.png') no-repeat center / cover;
                 color: $write;
                 font-size: 14px;
-                line-height: 30px;
-                text-align: center;
                 img {
                     width: 6px;
+                    margin-left: 6px;
                 }
             }
         }
         &_right {
-            width: 180px;
+            width: 141px;
             img {
                 width: 100%;
             }
@@ -202,7 +226,7 @@
                 }
             }
             &_right {
-                width: 106px;
+                width: 93px;
                 img {
                     width: 100%;
                 }

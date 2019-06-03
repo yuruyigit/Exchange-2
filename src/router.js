@@ -53,7 +53,7 @@ const router = new Router({
         {
             path: "/asked", //新手引导子页面
             name: "Asked",
-            meta: { id: 1.22},
+            meta: { id: 1.22 },
             components: {
                 default: () => import("views/Home/Asked")
             }
@@ -99,13 +99,27 @@ const router = new Router({
             path: "/register", //注册
             name: "Register",
             meta: { id: 0.3 },
-            component: () => import("views/Register")
+            component: () => import("views/Register"),
+            children: [
+                {
+                    path: "/register",
+                    name: "Phone",
+                    meta: { id: 0.4 },
+                    component: () => import("views/Register/Phone")
+                },
+                {
+                    path: "/register/email",
+                    name: "Email",
+                    meta: { id: 0.5 },
+                    component: () => import("views/Register/Email")
+                }
+            ]
         },
         {
-            path: "/register/email",
-            name: "RegisterEmail",
-            meta: { id: 0.4 },
-            component: () => import("views/Register/email.vue")
+            path: "/register/pwd", //杠杆
+            name: "Pwd",
+            meta: { id: 0.6 },
+            component: () => import("views/Register/Pwd")
         },
         {
             path: "/lever", //杠杆
@@ -165,6 +179,70 @@ const router = new Router({
             }
         },
         {
+            path: "/me/report", //投资报表
+            name: "Report",
+            meta: { id: 5.1 },
+            component: () => import("views/Me/Report")
+        },
+        {
+            path: "/me/fund", //资金明细
+            name: "Fund",
+            meta: { id: 5.2 },
+            component: () => import("views/Me/Fund")
+        },
+        {
+            path: "/me/setting", //账户设置
+            name: "Setting",
+            meta: { id: 5.3 },
+            component: () => import("views/Me/Setting")
+        },
+        {
+            path: "/me/setting/about", //关于我们
+            name: "About",
+            meta: { id: 5.34 },
+            component: () => import("views/Me/Setting/About")
+        },
+        {
+            path: "/me/security", //安全中心
+            name: "Security",
+            meta: { id: 5.4 },
+            component: () => import("views/Me/Security")
+        },
+        {
+            path: "/me/pwd", //修改登录密码
+            name: "Pwd",
+            meta: { id: 5.41 },
+            component: () => import("views/Me/Security/Child/Pwd.vue"),
+            children: [
+                {
+                    path: "/me/pwd",
+                    name: "PwdEdit",
+                    meta: { id: 5.42 },
+                    component: () =>
+                        import("views/Me/Security/Child/PwdEdit.vue")
+                },
+                {
+                    path: "/me/pwd/reset",//重置
+                    name: "PwdReset",
+                    meta: { id: 5.43 },
+                    component: () =>
+                        import("views/Me/Security/Child/PwdReset.vue")
+                }
+            ]
+        },
+        {
+            path: "/me/edit/:type", //修改手机||邮箱
+            name: "Edit",
+            meta: { id: 5.44 },
+            component: () => import("views/Me/Security/Child/Edit.vue")
+        },
+        {
+            path: "/me/edit1/:type", //修改手机||邮箱 step1
+            name: "Edit1",
+            meta: { id: 5.45 },
+            component: () => import("views/Me/Security/Child/Edit1.vue")
+        },
+        {
             path: "/me/user", //我的
             name: "User",
             meta: { id: 5.1 },
@@ -172,12 +250,17 @@ const router = new Router({
                 default: () => import("views/Me/User"),
                 mainfooter: Footer
             }
+        },
+        {
+            path: "/intord/:type", //所有介绍
+            name: "Intord",
+            meta: { id: 11 },
+            component: () => import("views/Intord")
         }
     ]
 });
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.id)) {
-        console.log(to.meta.id);
         let Id;
         if (to.meta.id == 4.1) {
             Id = 4;

@@ -1,0 +1,90 @@
+@import '~assets/stylus/variable.styl';
+.report {
+    background-color: $bgMain;
+    min-height: 100%;
+    &_wrap {
+        padding: 14px 16px;
+        &_top {
+            width: 100%;
+            height: 114px;
+            border-radius: 6px;
+            background-color: $write;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            .single {
+                width: 50%;
+                height: 67px;
+                padding: 5px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                &:last-child {
+                    line-1px($colorE, 100%);
+                }
+                &_big {
+                    font-size: 32px;
+                    color: $blue;
+                    &.red {
+                        color: #F93C34;
+                    }
+                    span:last-child {
+                        font-size: 16px;
+                    }
+                }
+                &_small {
+                    font-size: 15px;
+                    color: $color9;
+                }
+            }
+        }
+        &_info {
+            width: 100%;
+            border-radius: 6px;
+            background-color: $write;
+            margin-bottom: 10px;
+            padding: 16px;
+            h2 {
+                font-size: 16px;
+                color: $color3;
+                padding: 2px 0 18px 0;
+            }
+            .single {
+                height: 72px;
+                width: 100%;
+                border-radius: 6px;
+                background-color: $bgMain;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+                li {
+                    width: 33.3%;
+                    p {
+                        text-align: center;
+                        font-size: 16px;
+                        color: $color3;
+                        &:last-child {
+                            font-size: 13px;
+                            color: $color9;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        &_chat {
+            width: 100%;
+            border-radius: 6px;
+            background-color: $write;
+            margin-bottom: 10px;
+            padding: 16px;
+            h2 {
+                font-size: 16px;
+                color: $color3;
+                padding: 2px 0 18px 0;
+            }
+        }
+    }
+}

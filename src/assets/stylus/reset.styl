@@ -1,3 +1,4 @@
+@import '~assets/stylus/variable.styl';
 * {
     list-style: none;
     text-decoration: none;
@@ -107,9 +108,36 @@ li {
 .color-blue {
     color: #00a7e0;
 }
+.color9 {
+    color: #999;
+}
+.color3 {
+    color: #333;
+}
 // 隐藏谷歌验证码
 .grecaptcha-badge {
     display: none;
+}
+.slide-right-enter-active, .slide-right-leave-active, .slide-left-enter-active, .slide-left-leave-active {
+    will-change: transform;
+    transition: all 500ms;
+    position: absolute;
+}
+.slide-right-enter {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
 }
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
     .border-1px {

@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="me_list">
-      <van-cell is-link v-for="item in meList" :key="item.id" @click="clickCell(item.link)">
+      <van-cell is-link v-for="item in meList" :key="item.id" :to="item.link">
         <template slot="icon">
           <img class="icon_img" :src="item.icon" alt>
         </template>
@@ -55,9 +55,6 @@ export default {
   methods: {
     clickLeft() {
       this.$router.push("/");
-    },
-    clickCell(path) {
-      this.$router.push(path);
     }
   }
 };

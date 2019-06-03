@@ -1,0 +1,38 @@
+@import '~assets/stylus/variable.styl';
+.setting {
+    background-color: $bgMain;
+    height: 100%;
+    &_list {
+        background-color: $write;
+        margin-bottom: 10px;
+        .van-cell {
+            font-size: 15px;
+            color: $color3;
+            padding: 0 16px;
+            align-items: center;
+            height: 50px;
+            &__value {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                .van-uploader {
+                    extend-click();
+                }
+            }
+            &:after {
+                left: 16px;
+                border-bottom: 1px solid $colorE;
+            }
+        }
+    }
+    &_logout {
+        background-color: $write;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        color: $blue;
+    }
+}

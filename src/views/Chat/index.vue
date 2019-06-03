@@ -64,9 +64,6 @@ export default {
   },
   components: { NavBar },
   methods: {
-    clickLeft() {
-      this.$router.push("/");
-    },
     tabClick(index) {
       this.styls = {
         left: index * 33 + "%"

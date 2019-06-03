@@ -1,0 +1,39 @@
+@import '~assets/stylus/variable.styl';
+.security {
+    height: 100%;
+    &_list {
+        margin-bottom: 10px;
+        .van-cell {
+            font-size: 15px;
+            color: $color3;
+            padding: 0 18px;
+            align-items: center;
+            height: 50px;
+            &__value {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                .van-uploader {
+                    extend-click();
+                }
+            }
+            &:after {
+                left: 18px;
+                border-bottom: 1px solid $colorE;
+            }
+            &:last-child {
+                &:after {
+                    content: ' ';
+                    position: absolute;
+                    pointer-events: none;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                    right: 0;
+                    bottom: 0;
+                    -webkit-transform: scaleY(0.5);
+                    transform: scaleY(0.5);
+                }
+            }
+        }
+    }
+}

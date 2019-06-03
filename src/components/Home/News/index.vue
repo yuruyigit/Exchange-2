@@ -9,7 +9,7 @@
         <p class="size">行业快讯德里克代课老师OTC交易</p>
       </div>
       <div class="news_top_right">
-        <img src="~assets/Images/home/banner.png" alt>
+        <img src="~assets/Images/home/img_news.png" alt>
       </div>
     </router-link>
     <div class="news_bot">

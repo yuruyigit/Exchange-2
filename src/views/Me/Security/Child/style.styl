@@ -1,0 +1,76 @@
+@import '~assets/stylus/variable.styl';
+.tips {
+    font-size: 15px;
+    color: $color6;
+    padding: 20px 28px;
+}
+.tab_bar {
+    padding: 20px 28px;
+    a {
+        font-size: 15px;
+        color: $color6;
+        transition: color 0.3s linear;
+        extend-click();
+        &.router-link-exact-active {
+            color: $blue;
+        }
+        &:first-child {
+            margin-right: 30px;
+        }
+    }
+}
+.from {
+    padding: 14px 28px;
+    .inp_group {
+        border-1px($color12, 100%);
+        height: 72px;
+        font-size: 16px;
+        margin-bottom: 1px;
+        padding-left: 2px;
+        input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            placeholderColor($color9);
+            font-size: 18px;
+            &:disabled {
+                background-color: transparent;
+                cursor: not-allowed;
+            }
+        }
+        &_right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            line-height: 64px;
+            padding: 6px;
+            color: $color6;
+            font-size: 14px;
+            border: none;
+            background: transparent;
+            &:disabled {
+                color: $blue;
+            }
+        }
+    }
+    &_btn {
+        margin-top: 50px;
+        width: 319px;
+        height: 44px;
+        background: url('../../../../assets/Images/regLogin/bg_btn.png') no-repeat center;
+        background-size: 100% 100%;
+        border: none;
+        color: $write;
+        font-size: 16px;
+        line-height: 44px;
+        &:disabled {
+            color: rgba(255, 255, 255, 0.6);
+        }
+    }
+    &_tips {
+        padding-top: 10px;
+        color: $blue;
+        font-size: 14px;
+    }
+}

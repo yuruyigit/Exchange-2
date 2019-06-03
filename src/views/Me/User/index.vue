@@ -26,7 +26,7 @@ export default {
       console.log(file);
     },
     clickLeft() {
-      this.$router.go(-1);
+      this.$router.back(-1);
     }
   }
 };

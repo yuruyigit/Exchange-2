@@ -4,7 +4,14 @@
       <p class="group_avatar">
         <img src="~assets/Images/home/icon_hot.png" alt>
       </p>
-      <p class="group_notLogin">{{$t('notLogin')}}</p>
+      <p v-show="false" class="group_notLogin">{{$t('notLogin')}}</p>
+      <div class="group_login">
+        <p class="balance">
+          188,12USDT
+          <img class="balance_icon" src="~assets/Images/home/icon_more_unsel.png" alt>
+        </p>
+        <p class="balance_bot">模拟盘</p>
+      </div>
     </div>
     <div class="right">
       <img src="~assets/Images/home/icon_server.png" alt>

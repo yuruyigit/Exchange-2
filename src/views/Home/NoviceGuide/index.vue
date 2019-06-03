@@ -89,7 +89,7 @@
         <div class="group">
           <router-link to="/asked/lever_list" tag="div" class="group_nav border-1px">
             <p class="group_nav_l">
-              <img src="~assets/Images/guide/icon_b2.png" alt>关于杠杆交易
+              <img src="~assets/Images/guide/icon_b3.png" alt>关于杠杆交易
             </p>
             <van-icon class="arrow" name="arrow"/>
           </router-link>
@@ -102,7 +102,7 @@
               :to="`/asked/lever_list?name=${item.name}`"
               :key="item.name"
             >
-              <img src="~assets/Images/guide/icon_b5.png" alt>
+              <img src="~assets/Images/guide/icon_b4.png" alt>
               <p>{{item.title}}</p>
             </router-link>
           </ul>
