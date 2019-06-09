@@ -1,0 +1,37 @@
+@import '~assets/stylus/variable.styl';
+$colorSize = #9BA0AC;
+.intord {
+    padding: 0 16px;
+    &_list {
+        li {
+            display: flex;
+            align-items: center;
+            height: 36px;
+            font-size: 13px;
+            line-height: 24px;
+            .big {
+                font-size: 16px;
+                color: $blue;
+            }
+            .small {
+                color: $colorSize;
+                margin-left: 16px;
+            }
+            .label {
+                width: 82px;
+                color: $colorSize;
+            }
+            .val {
+                flex: 1;
+                color: $write;
+            }
+            &.title {
+                height: 50px;
+            }
+            &.letter {
+                height: auto;
+                align-items: flex-start;
+            }
+        }
+    }
+}

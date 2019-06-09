@@ -33,7 +33,7 @@ html {
     height: 100%;
 }
 body {
-    font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+    font-family: 'PingFang SC';
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -66,8 +66,11 @@ button {
     vertical-align: middle;
     text-align: center;
 }
-button, a, input[button] {
+button, a {
     cursor: pointer;
+}
+input {
+    line-height: normal;
 }
 @supports (bottom: env(safe-area-inset-bottom)) {
     body {

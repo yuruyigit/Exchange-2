@@ -134,10 +134,21 @@ const router = new Router({
             path: "/position", //交易
             name: "position",
             meta: { id: 3 },
-            components: {
-                default: () => import("views/positions"),
-                mainfooter: Footer
-            }
+            component: () => import("views/positions"),
+            children: [
+                {
+                    path: "/position",
+                    name: "Capital",
+                    meta: { id: 3.1 },
+                    component: () => import("views/positions/Capital")
+                },
+                {
+                    path: "/position/intord",
+                    name: "Intord",
+                    meta: { id: 3.2 },
+                    component: () => import("views/positions/Intord")
+                }
+            ]
         },
         {
             path: "/chat", //持仓
@@ -222,7 +233,7 @@ const router = new Router({
                         import("views/Me/Security/Child/PwdEdit.vue")
                 },
                 {
-                    path: "/me/pwd/reset",//重置
+                    path: "/me/pwd/reset", //重置
                     name: "PwdReset",
                     meta: { id: 5.43 },
                     component: () =>

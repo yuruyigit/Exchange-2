@@ -1,0 +1,47 @@
+@import '~assets/stylus/variable.styl';
+$colorSize = #9BA0AC;
+.capital {
+    width: 100%;
+    padding: 0 16px;
+    &_title, &_single {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        li {
+            text-align: center;
+            font-size: 13px;
+            color: $colorSize;
+        }
+        .type {
+            width: 10%;
+        }
+        .num {
+            width: 18%;
+        }
+        .price {
+            flex: 1;
+        }
+    }
+    &_single {
+        height: 28px;
+        li {
+            color: $write;
+        }
+        .price {
+            display: flex;
+            p {
+                width: 50%;
+                &:first-child {
+                    text-align: right;
+                    padding-right: 6px;
+                    color: $green;
+                }
+                &:last-child {
+                    text-align: left;
+                    padding-left: 6px;
+                    color: $redBtn;
+                }
+            }
+        }
+    }
+}

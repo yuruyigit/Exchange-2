@@ -85,6 +85,55 @@
                 color: $color3;
                 padding: 2px 0 18px 0;
             }
+            &_top {
+                display: flex;
+                .left {
+                    width: 200px;
+                }
+                .right {
+                    flex: 1;
+                    padding: 10px 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    li {
+                        display: flex;
+                        align-items: center;
+                        font-size: 15px;
+                        .icon {
+                            width: 15px;
+                            height: 15px;
+                            border-radius: 8px;
+                            border: 4px solid #E066FF;
+                            align-items: center;
+                        }
+                        .coin {
+                            margin-left: 6px;
+                        }
+                        .defCoin {
+                            margin-left: 6px;
+                            font-size: 13px;
+                        }
+                        .ratio {
+                            margin-left: 12px;
+                        }
+                    }
+                }
+            }
+            &_list {
+                margin-top: 20px;
+                border-radius: 6px;
+                background-color: $bgMain;
+                padding: 10px 20px;
+                font-size: 14px;
+                color: $color3;
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 34px;
+                }
+            }
         }
     }
 }

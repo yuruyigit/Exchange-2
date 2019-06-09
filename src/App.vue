@@ -20,16 +20,16 @@ export default {
     };
   },
   created() {
-    this.Socket = new WBT();
+    // this.Socket = new WBT();
   },
   mounted() {
-    let _this = this;
-    setTimeout(() => {
-      _this.Socket.isReconnect = true;
-      _this.Socket.close();
+    // let _this = this;
+    // setTimeout(() => {
+    //   _this.Socket.isReconnect = true;
+    //   _this.Socket.close();
 
-      _this.Socket.initWs();
-    }, 1000);
+    //   _this.Socket.initWs();
+    // }, 1000);
   },
   components: {
     Footer
