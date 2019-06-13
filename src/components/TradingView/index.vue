@@ -4,6 +4,7 @@
 
 <script>
 import Datafeed from "./api/index";
+// import Datafeed from "./pro/index";
 function getLanguageFromURL() {
   const regex = new RegExp("[\\?&]lang=([^&#]*)");
   const results = regex.exec(window.location.search);
@@ -64,7 +65,10 @@ export default {
       { title: "5分", resolution: "5", chartType: 1 },
       { title: "15分", resolution: "15", chartType: 1 },
       { title: "30分", resolution: "30", chartType: 1 },
-      { title: "1时", resolution: "60", chartType: 1 }
+      { title: "1时", resolution: "60", chartType: 1 },
+      { title: "1日", resolution: "1D", chartType: 1 },
+      { title: "1周", resolution: "1W", chartType: 1 },
+      { title: "1月", resolution: "1M", chartType: 1 }
     ];
     return {
       tvWidget: null
@@ -115,11 +119,11 @@ export default {
         //设置按钮
         "header_settings",
         //技术指标线
-        "header_indicators",
+        // "header_indicators",
         //上传下载按钮
         "header_saveload",
         //分辨率
-        "header_resolutions",
+        // "header_resolutions",
         //全屏
         "header_fullscreen_button",
         "property_pages",
@@ -178,6 +182,10 @@ export default {
     });
   },
   methods: {
+    handleClick() {
+      console.log(1111);
+      console.log(this.tvWidget.chart().getShapeById("MACD"));
+    },
     createStudy(tvWidget) {
       tvWidget
         .chart()
@@ -203,6 +211,49 @@ export default {
       this.tvWidget
         .chart()
         .setResolution(resolution, function onReadyCallback() {});
+    },
+    getID(Id, type) {
+      console.log(Id, type);
+      this[type] = Id;
+    },
+    //关闭其他指标
+    closeOther() {
+      let IdArr = this.tvWidget.chart().getAllStudies();
+      console.log(IdArr);
+      IdArr.forEach(item => {
+        if (
+          item.name == "Moving Average Exponential" ||
+          item.name == "Volume"
+        ) {
+          return;
+        } else {
+          this.tvWidget.chart().removeEntity(item.id);
+        }
+      });
+    },
+    MACD() {
+      this.closeOther();
+      this.tvWidget.chart().createStudy("MACD", false, false, [], Id => {
+        this.getID(Id, "MACDID");
+      });
+    },
+    BOLL() {
+      this.closeOther();
+      this.tvWidget.chart().createStudy("Bollinger Bands", false, false, []);
+    },
+    KDJ() {
+      this.closeOther();
+      this.tvWidget.chart().createStudy("Stochastic", false, false, []);
+    },
+    RSI() {
+      this.closeOther();
+      this.tvWidget
+        .chart()
+        .createStudy("Relative Strength Index", false, false, []);
+    },
+    WR() {
+      this.closeOther();
+      this.tvWidget.chart().createStudy("Williams %R", false, false, []);
     }
   },
   destroyed() {
