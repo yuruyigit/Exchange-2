@@ -13,10 +13,10 @@
         <p class="balance_bot">模拟盘</p>
       </div>
     </div>
-    <div class="right">
+    <router-link tag="div" to="/service" class="right">
       <img src="~assets/Images/home/icon_server.png" alt>
       <p class="right_size">{{$t("server")}}</p>
-    </div>
+    </router-link>
   </div>
 </template>
 

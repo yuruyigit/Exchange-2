@@ -1,12 +1,12 @@
 import historyProvider from "./historyProvider";
 import { dateFormat } from "common/TollClass/func";
-// import stream from './stream'
-
+import stream from './stream'
 const supportedResolutions = ["1", "5", "15", "30", "60", "D", "W", "M"];
 
 const config = {
     supported_resolutions: supportedResolutions
 };
+
 
 export default {
     onReady: cb => {
@@ -28,7 +28,6 @@ export default {
         // console.log({split_data})
         var symbol_stub = {
             name: symbolName,
-            description: "",
             type: "crypto",
             session: "24x7",
             timezone: "Etc/UTC",
@@ -37,7 +36,7 @@ export default {
             minmov: 1,
             pricescale: 100,
             has_intraday: true,
-            // intraday_multipliers: ['1', '60'],
+            has_weekly_and_monthly: true,
             supported_resolution: supportedResolutions,
             volume_precision: 8,
             data_status: "streaming"
@@ -48,8 +47,7 @@ export default {
         }
         setTimeout(function() {
             onSymbolResolvedCallback(symbol_stub);
-            console.log(onSymbolResolvedCallback(symbol_stub));
-            console.log("Resolving that symbol....", symbol_stub);
+            console.log("Resolving that symbol....");
         }, 0);
 
         // onResolveErrorCallback('Not feeling it today')
@@ -63,13 +61,15 @@ export default {
         onErrorCallback,
         firstDataRequest
     ) {
-        console.log("=====getBars running", resolution, symbolInfo);
+        console.log("=====getBars running");
         // console.log('function args',arguments)
-        console.log(
-            `Requesting bars between ${new Date(
-                from * 1000
-            ).toISOString()} and ${new Date(to * 1000).toISOString()}`
-        );
+        // console.log(
+        //     `Requesting bars between ${new Date(
+        //         from * 1000
+        //     ).toISOString()} and ${new Date(to * 1000).toISOString()}`
+        // );
+
+        
 
         historyProvider
             .getBars(symbolInfo, resolution, from, to, firstDataRequest)
@@ -93,12 +93,12 @@ export default {
         onResetCacheNeededCallback
     ) => {
         console.log("=====subscribeBars runnning");
-        // stream.subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscribeUID, onResetCacheNeededCallback)
+        stream.subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscribeUID, onResetCacheNeededCallback)
     },
     unsubscribeBars: subscriberUID => {
         console.log("=====unsubscribeBars running");
 
-        // stream.unsubscribeBars(subscriberUID)
+        stream.unsubscribeBars(subscriberUID)
     },
     calculateHistoryDepth: (resolution, resolutionBack, intervalBack) => {
         //optional

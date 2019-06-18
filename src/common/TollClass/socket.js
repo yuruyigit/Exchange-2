@@ -1,3 +1,6 @@
+import Vue from "vue";
+const _comm = new Vue();
+import ENV from "../Api/ENV";
 var WBT = function(obj) {
     /*
     websocket接口地址
@@ -6,12 +9,12 @@ var WBT = function(obj) {
     3、端口号
     */
     const config = obj ? obj : {};
-    const protocol = window.location.protocol == "http:" ? "ws://" : "wss://";
-    const host = window.location.host;
-    const port = ":8087";
+    // const protocol = window.location.protocol == "http:" ? "ws://" : "wss://";
+    // const host = window.location.host;
+    // const port = ":8087";
     //接口地址url
     // this.url = config.ip || protocol + host + port;
-    this.url = "wss://www.123210.co/zongcai/myHandler?tokenKey=leizhou184";
+    this.url = ENV.getENV()[config.url];
     //socket对象
     this.socket;
     //心跳状态  为false时不能执行操作 等待重连
@@ -26,7 +29,6 @@ var WBT = function(obj) {
     //自定义Ws消息接收函数：服务器向前端推送消息时触发
     this.onmessage = e => {
         //处理各种推送消息
-        // console.log(message)
         this.handleEvent(e);
     };
     //自定义Ws异常事件：Ws报错后触发
@@ -42,11 +44,11 @@ var WBT = function(obj) {
     };
     this.close = () => {
         //主动关闭  停止重连
-        // this.isReconnect = true;
+        this.isReconnect = true;
         this.socket.close();
     };
     //初始化websocket连接
-    this.initWs();
+    // this.initWs();
 };
 
 //初始化websocket连接
@@ -81,7 +83,7 @@ WBT.prototype.initWs = function() {
 // 断线重连 reConnect
 WBT.prototype.reConnect = function() {
     if (this.isReconnect) return;
-    console.log('666666666666666666666666666666')
+    console.log("666666666666666666666666666666");
     this.isReconnect = true;
     var _this = this;
     //没连接上会一直重连，设置延迟避免请求过多
@@ -93,7 +95,14 @@ WBT.prototype.reConnect = function() {
 
 //处理消息
 WBT.prototype.handleEvent = function(message) {
-    console.log(message);
+    if (message.data !== "连接成功") {
+        let data = JSON.parse(message.data);
+        //根据不同type处理不同逻辑
+        if (this.handleAction[data.type]) {
+            this.handleAction[data.type](data);
+        }
+    }
+
     // const action = message.action;
     // const retCode = message.params.retCode.id;
     // //根据action和retCode处理事件
@@ -101,16 +110,22 @@ WBT.prototype.handleEvent = function(message) {
     // if (this.handleAction[action][retCode])
     //     this.handleAction[action][retCode]();
 };
+//发送消息
+WBT.prototype.Send = function(data) {
+    if (this.socket) {
+        this.socket.send(data);
+    }
+};
 //事务处理 根据action
 WBT.prototype.handleAction = {
-    //登录反馈
-    loginRsp: {
-        "0": function() {
-            console.log(0);
-        },
-        "3": function() {
-            console.log(3);
-        }
+    kline(data) {
+        _comm.$EventListener.fire("TVkline", data);
+    },
+    detail(data) {
+        _comm.$EventListener.fire("TVdetail", data);
+    },
+    depth(data) {
+        _comm.$EventListener.fire("TVdepth", data);
     }
 };
 

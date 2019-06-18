@@ -53,7 +53,28 @@ import NavBar from "components/NavBar";
 export default {
   data() {
     return {
-      List: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19,20],
+      List: [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
       loading: false,
       finished: false,
       isLoading: false
@@ -66,7 +87,28 @@ export default {
     onLoad() {
       setTimeout(() => {
         this.loading = false;
-        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let arr = [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ];
         if (this.List.length > 100) {
           this.finished = true;
           this.$toast({
@@ -86,7 +128,26 @@ export default {
       setTimeout(() => {
         this.isLoading = false;
         this.finished = false;
-        this.List = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        this.List = [1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20];
         this.$toast({
           message: "刷新成功",
           duration: 500

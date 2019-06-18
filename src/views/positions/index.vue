@@ -1,130 +1,208 @@
 <template>
   <div class="pos">
-    <NavBar title="BTC/USDT" fixed showL @clickLeft="clickLeft"/>
+    <NavBar title="BTC/USDT" fixed showL @clickLeft="clickLeft" @handleClick="showSelect"/>
+    <van-popup v-model="show" position="top">
+      <div class="selectWrap">
+        <h2>BTC/USDT</h2>
+        <ul class="selectList">
+          <li @click="select">
+            <p class="coin">BTC/USDT</p>
+            <p class="price">{{detailData.close}}</p>
+          </li>
+          <li>
+            <p class="coin">ETH/USDT</p>
+            <p class="price">296.62</p>
+          </li>
+        </ul>
+      </div>
+    </van-popup>
+    <!-- @click="show=!show" -->
     <div class="pos_top">
       <div class="pos_top_t">
-        <div class="left color-green">5794.42</div>
+        <div class="left color-green">{{detailData.close|toFixeds(2)}}</div>
         <ul class="right">
-          <li>高(24H)&nbsp;&nbsp;5871.71</li>
-          <li>低(24H)&nbsp;&nbsp;5821.60</li>
-          <li>量(24H)&nbsp;&nbsp;689950.21</li>
+          <li>高(24H)&nbsp;&nbsp;{{detailData.high|toFixeds(2)}}</li>
+          <li>低(24H)&nbsp;&nbsp;{{detailData.low|toFixeds(2)}}</li>
+          <li>量(24H)&nbsp;&nbsp;{{detailData.amount|toFixeds(2)}}</li>
         </ul>
       </div>
       <div class="pos_top_btn">
         <div class="btn_list">
-          <button :class="btnType == 1&&'active'" @click="clickBtn(1)">1分</button>
-          <button :class="btnType == 5&&'active'" @click="clickBtn(5)">5分</button>
-          <button :class="btnType == 15&&'active'" @click="clickBtn(15)">15分</button>
-          <button :class="btnType == 30&&'active'" @click="clickBtn(30)">30分</button>
-          <button :class="btnType == 60&&'active'" @click="clickBtn(60)">1时</button>
+          <button :class="TVInterval == 1&&'active'" @click="clickBtn(1)">1分</button>
+          <button :class="TVInterval == 5&&'active'" @click="clickBtn(5)">5分</button>
+          <button :class="TVInterval == 15&&'active'" @click="clickBtn(15)">15分</button>
+          <button :class="TVInterval == 30&&'active'" @click="clickBtn(30)">30分</button>
+          <button :class="TVInterval == 60&&'active'" @click="clickBtn(60)">1时</button>
           <button @click="clickBtnMore(true)">更多</button>
           <button @click="clickBtnMore(false)">指标</button>
         </div>
         <transition name="moreIndex">
           <div v-if="isShow" class="child_list">
             <div v-show="isOther">
-              <button @click="clickBtn('D')">1天</button>
-              <button @click="clickBtn('W')">1周</button>
-              <button @click="clickBtn('M')">1月</button>
+              <button :class="TVInterval == '240'&&'active'" @click="clickBtn(240)">4时</button>
+              <button :class="TVInterval == '1D'&&'active'" @click="clickBtn('1D')">1天</button>
+              <button :class="TVInterval == '1W'&&'active'" @click="clickBtn('1W')">1周</button>
+              <button :class="TVInterval == '1M'&&'active'" @click="clickBtn('1M')">1月</button>
             </div>
             <div v-show="!isOther">
-              <button @click="clickIndicator('MACD')">MACD</button>
-              <button @click="clickIndicator('BOLL')">BOLL</button>
-              <button @click="clickIndicator('KDJ')">KDJ</button>
-              <button @click="clickIndicator('RSI')">RSI</button>
-              <button @click="clickIndicator('WR')">WR</button>
-              <button @click="clickIndicator('closeOther')">隐藏</button>
+              <button :class="TVInterval == 'MACD'&&'active'" @click="clickIndicator('MACD')">MACD</button>
+              <button :class="TVInterval == 'BOLL'&&'active'" @click="clickIndicator('BOLL')">BOLL</button>
+              <button :class="TVInterval == 'KDJ'&&'active'" @click="clickIndicator('KDJ')">KDJ</button>
+              <button :class="TVInterval == 'RSI'&&'active'" @click="clickIndicator('RSI')">RSI</button>
+              <button :class="TVInterval == 'WR'&&'active'" @click="clickIndicator('WR')">WR</button>
+              <button
+                :class="TVInterval == 'closeOther'&&'active'"
+                @click="clickIndicator('closeOther')"
+              >隐藏</button>
             </div>
           </div>
         </transition>
       </div>
     </div>
     <div class="k_line">
-      <!-- <TradingView ref="trading" symbol="BTC/USDT"></TradingView> -->
-      <TradingView ref="trading"></TradingView>
+      <TradingView ref="trading" :symbol="symbol" :interval="TVInterval"></TradingView>
+      <!-- <TradingView ref="trading"></TradingView> -->
     </div>
     <div class="pos_wrap">
       <div class="tabs">
         <ul class="tabs_wrap">
-          <router-link to="/position" tag="li">
-            <p @click="tabClick(0)">资金</p>
-          </router-link>
-          <router-link to="/position/intord" tag="li">
-            <p @click="tabClick(1)">简介</p>
-          </router-link>
+          <li :class="tabsType == 'Capital'&&'active'" @click="tabClick('Capital')">
+            <p>资金</p>
+          </li>
+          <li :class="tabsType == 'Intord'&&'active'" @click="tabClick('Intord')">
+            <p>简介</p>
+          </li>
         </ul>
         <div :style="styls" class="tabs_line"></div>
       </div>
       <div class="cont">
-        <transition :name="transitionName">
-          <router-view/>
-        </transition>
+        <Capital v-if="tabsType == 'Capital'"/>
+        <Intord v-if="tabsType == 'Intord'"/>
       </div>
     </div>
     <div class="handWrap">
       <button>买跌 5794.34</button>
       <button>买涨 5798.39</button>
     </div>
+    <PlaceOrder v-show="false"/>
   </div>
 </template>
 
 <script>
 import NavBar from "components/NavBar/pos";
+import Capital from "./Capital";
+import Intord from "./Intord";
+import PlaceOrder from "./PlaceOrder";
 import TradingView from "components/TradingView";
+import WBT from "common/TollClass/socket";
+import { setTimeout } from "timers";
 export default {
   data() {
     return {
-      transitionName: "slide-left",
-      btnType: 5,
+      TVInterval: this.$lStore.get("TVInterval") || 5,
       isOther: true,
-      isShow: true
+      isShow: false,
+      Indicator: "closeOther",
+      show: false,
+      symbol: "BTC/USDT",
+      tabsType: "Capital",
+      styls: {
+        left: 0
+      },
+      detailData: {},
+      Socket: null
     };
   },
   created() {
-    this._initPage();
+    this.Socket = new WBT({ url: "TVsocket" });
+    this.initSocket();
   },
-  components: { NavBar, TradingView },
+  destroyed() {
+    this.Socket.close();
+  },
+  components: {
+    NavBar,
+    TradingView,
+    Capital,
+    Intord,
+    PlaceOrder
+  },
   methods: {
-    _initPage() {
-      if (this.$route.name == "Intord") {
-        this.tabClick(1);
-      } else {
-        this.tabClick(0);
-      }
+    //初始化Socket
+    initSocket() {
+      this.Socket.initWs();
+      let datas = this.resolutionSocket(this.TVInterval);
+      setTimeout(() => this.Socket.Send(JSON.stringify(datas)), 100);
+      this.$EventListener.on("TVdetail", this.renderDetail);
+      this.$EventListener.on("TVdepth", this.rederDeoth);
     },
-    tabClick(index) {
+    //更新头部价格成交量
+    renderDetail(data) {
+      console.log(data);
+      setTimeout(() => {
+        this.detailData = data;
+      }, 300);
+    },
+    rederDeoth(data) {
+      //   console.log(data);
+    },
+    //点击tabs
+    tabClick(type) {
+      let index = 0;
+      if (type === "Capital") {
+        index = 0;
+      } else if (type === "Intord") {
+        index = 1;
+      }
       this.styls = {
         left: index * 50 + "%"
       };
+      this.tabsType = type;
     },
+    //选择币种
+    select() {},
     clickLeft() {
       this.$router.push("/");
     },
+    //点击TV的分辨率
     clickBtn(resolution) {
+      let datas = this.resolutionSocket(resolution);
+      this.$lStore.set("TVInterval", resolution);
       this.isShow = false;
-      this.btnType = resolution;
+      this.TVInterval = resolution;
       this.$refs.trading.clickBtn(resolution);
+      this.Socket.Send(JSON.stringify(datas));
     },
-
+    //socket 时间区间格式化
+    resolutionSocket(resolution) {
+      let type = typeof resolution,
+        datas = {
+          "btcusdt-ticket": "0",
+          "btcusdt-depth": "0"
+        };
+      if (type == "number") {
+        datas[`btcusdt-kline-${resolution}m`] = 0;
+      } else if (type == "string") {
+        if (resolution == "1M") {
+          datas[`btcusdt-kline-${resolution}`] = 0;
+        } else {
+          datas[`btcusdt-kline-${resolution.toLowerCase()}`] = 0;
+        }
+      }
+      return datas;
+    },
+    //显示币种列表
+    showSelect() {
+      this.show = true;
+    },
+    //点击打开更多
     clickBtnMore(bol) {
       this.isOther = bol;
       this.isShow = true;
     },
+    //选择指标类型
     clickIndicator(type) {
-      console.log(this.$refs.trading[type]());
-    }
-  },
-  watch: {
-    $route(to, from) {
-      let toName = to.name;
-      const toIndex = to.meta.id;
-      const fromIndex = from.meta.id;
-      if (toName == "Intord") {
-        this.tabClick(1);
-      } else {
-        this.tabClick(0);
-      }
-      this.transitionName = toIndex < fromIndex ? "slide-right" : "slide-left";
+      this.$refs.trading[type]();
     }
   }
 };

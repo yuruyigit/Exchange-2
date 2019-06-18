@@ -1,5 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
+import "./common/extend";
+import "./common/filter";
 import router from "./router";
 import store from "./Store";
 import {
@@ -17,7 +19,8 @@ import {
     Uploader,
     Toast,
     Swipe,
-    SwipeItem
+    SwipeItem,
+    Popup
 } from "vant";
 import VueI18n from "vue-i18n";
 import FastClick from "fastclick";
@@ -49,7 +52,8 @@ Vue.use(VueI18n)
     .use(Uploader)
     .use(Toast)
     .use(Swipe)
-    .use(SwipeItem);
+    .use(SwipeItem)
+    .use(Popup);
 const i18n = new VueI18n({
     locale: store.state.lang,
     messages: {

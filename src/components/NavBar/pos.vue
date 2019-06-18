@@ -4,7 +4,7 @@
       <div class="nav_bar_l">
         <van-icon v-show="showL" class="back_icon" @click="clickLeft" name="arrow-left"/>
       </div>
-      <div class="nav_bar_c">
+      <div class="nav_bar_c" @click="handleClick">
         {{title}}
         <van-icon name="arrow-down"/>
       </div>
@@ -52,6 +52,10 @@ export default {
   methods: {
     clickLeft(e) {
       this.$emit("clickLeft");
+      e.preventDefault();
+    },
+    handleClick(e) {
+      this.$emit("handleClick");
       e.preventDefault();
     },
     isClass(fixed, border) {

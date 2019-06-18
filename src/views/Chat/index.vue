@@ -62,8 +62,16 @@ export default {
       transitionName: "slide-left"
     };
   },
+  created() {
+    this._initPage();
+  },
   components: { NavBar },
   methods: {
+    _initPage() {
+      if (this.$route.name == "ChatList") {
+        this.tabClick(1);
+      }
+    },
     tabClick(index) {
       this.styls = {
         left: index * 33 + "%"

@@ -1,38 +1,36 @@
-var rp = require("request-promise").defaults({ json: true });
-
-const api_root = "http://192.168.50.71:8080/v1/kline/findList";
+import { Get } from "common/Api";
 const history = {};
 
 export default {
     history: history,
     getBars: function(symbolInfo, resolution, from, to, first, limit) {
         var split_symbol = symbolInfo.name.split(/[:/]/);
-        to = to * 1000;
-        console.log(resolution)
-        if(resolution<60){
-            resolution = resolution + "m"
-        }else if(resolution == 60){
-            resolution ="1h"
-        }else if(resolution == 'D'){
-            resolution ="1d"
-        }else if(resolution == 'W'){
-            resolution ="1w"
-        }else if(resolution == 'M'){
-            resolution ="1M"
+        // to = to * 1000;
+        // console.log(resolution)
+        if (resolution < 60) {
+            resolution = resolution + "m";
+        } else if (resolution == 60) {
+            resolution = "1h";
+        } else if (resolution == "1D") {
+            resolution = "1d";
+        } else if (resolution == "1W") {
+            resolution = "1w";
+        } else if (resolution == "1M") {
+            resolution = "1M";
+        } else {
+            resolution = "5m";
         }
         const qs = {
             currency: split_symbol[0],
             base: split_symbol[1],
-            openTime: from ? from : "",
-            interval: resolution,
-            pageSize: limit ? limit : 500
-            // aggregate: 1//resolution
+            openTime: to ? to : "",
+            interval: resolution, //resolution
+            pageSize: limit ? limit : 200
         };
-        // console.log({qs})
-
-        return rp({
-            url: `${api_root}`,
-            qs
+        return Get({
+            url: "/v1/kline/findList",
+            data: qs,
+            name: "K线数据源"
         }).then(data => {
             if (data.Response && data.Response === "Error") {
                 console.log("CryptoCompare API error:", data.Message);
@@ -46,7 +44,7 @@ export default {
                         high: el.high,
                         open: el.open,
                         close: el.close,
-                        volume: el.volume
+                        volume: el.volume,
                     };
                 });
                 if (first) {

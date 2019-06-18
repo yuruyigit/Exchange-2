@@ -23,10 +23,10 @@ export default {
     // this.Socket = new WBT();
   },
   mounted() {
-    // let _this = this;
+    let _this = this;
     // setTimeout(() => {
     //   _this.Socket.isReconnect = true;
-    //   _this.Socket.close();
+    // //   _this.Socket.close();
 
     //   _this.Socket.initWs();
     // }, 1000);
@@ -53,6 +53,7 @@ export default {
   flex-direction: column;
   .main {
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     flex: 1;
     &_wrapper {
       width: 100%;

@@ -34,7 +34,6 @@ export default {
         this.items.push(this.items[0]);
         this.items.shift();
         this.animate = false;
-        console.log(1111);
       }, 500);
     }
   }

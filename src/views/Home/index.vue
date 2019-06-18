@@ -42,14 +42,11 @@ export default {
   },
   methods: {
     getBanner() {
-      Axios({
-        url: "/v1/banner/",
-        method: "get",
-        baseURL: "https://web.mt1733.com",
-        params: { type: 2 }
-      }).then(res => {
-        console.log(res);
-      });
+      this.$Get({ url: "/v1/banner/", data: { type: 2 }, pro: true }).then(
+        res => {
+          console.log(res);
+        }
+      );
     }
   }
 };

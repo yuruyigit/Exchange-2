@@ -1,19 +1,15 @@
 // api/stream.js
 import historyProvider from "./historyProvider.js";
-// we use Socket.io client to connect to cryptocompare's socket.io stream
-var io = require("socket.io-client");
-var socket_url = "wss://streamer.cryptocompare.com";
-var socket = io(socket_url);
+import { dateFormat } from "common/TollClass/func";
+import Vue from "vue";
+const _comm = new Vue();
 // keep track of subscriptions
 var _subs = [];
 
 export default {
     subscribeBars: function(symbolInfo, resolution, updateCb, uid, resetCache) {
-        const channelString = createChannelString(symbolInfo);
-        socket.emit("SubAdd", { subs: [channelString] });
-
+        _comm.$EventListener.on("TVkline", klineLastBar);
         var newSub = {
-            channelString,
             uid,
             resolution,
             symbolInfo,
@@ -28,53 +24,17 @@ export default {
             //console.log("No subscription found for ",uid)
             return;
         }
-        var sub = _subs[subIndex];
-        socket.emit("SubRemove", { subs: [sub.channelString] });
         _subs.splice(subIndex, 1);
     }
 };
 
-socket.on("connect", () => {
-    console.log("===Socket connected");
-});
-socket.on("disconnect", e => {
-    console.log("===Socket disconnected:", e);
-});
-socket.on("error", err => {
-    console.log("====socket error", err);
-});
-socket.on("m", e => {
-    // here we get all events the CryptoCompare connection has subscribed to
-    // we need to send this new data to our subscribed charts
-    const _data = e.split("~");
-    
-    if (_data[0] === "3") {
-        // console.log('Websocket Snapshot load event complete')
-        return;
-    }
-    const data = {
-        sub_type: parseInt(_data[0], 10),
-        exchange: _data[1],
-        to_sym: _data[2],
-        from_sym: _data[3],
-        trade_id: _data[5],
-        ts: parseInt(_data[6], 10),
-        volume: parseFloat(_data[7]),
-        price: parseFloat(_data[8])
-    };
-
-   
-    const channelString = `${data.sub_type}~${data.exchange}~${data.to_sym}~${
-        data.from_sym
-    }`;
-    const sub = _subs.find(e => e.channelString === channelString);
-
-    if (sub) {
+const klineLastBar = data => {
+    if (_subs.length) {
         // disregard the initial catchup snapshot of trades for already closed candles
-        if (data.ts < sub.lastBar.time / 1000) {
+        let sub = _subs[0];
+        if (data.ts < sub.lastBar.time) {
             return;
         }
-        console.log(data,sub)
         var _lastBar = updateBar(data, sub);
 
         // send the most recent bar back to TV's realtimeUpdate callback
@@ -82,45 +42,45 @@ socket.on("m", e => {
         // update our own record of lastBar
         sub.lastBar = _lastBar;
     }
-});
+};
 
 // Take a single trade, and subscription record, return updated bar
 function updateBar(data, sub) {
     var lastBar = sub.lastBar;
     let resolution = sub.resolution;
+
     if (resolution.includes("D")) {
         // 1 day in minutes === 1440
         resolution = 1440;
     } else if (resolution.includes("W")) {
         // 1 week in minutes === 10080
         resolution = 10080;
+    } else if (resolution.includes("M")) {
+        resolution = 43200;
     }
-    var coeff = resolution * 60;
-    // console.log({coeff})
-    var rounded = Math.floor(data.ts / coeff) * coeff;
-    var lastBarSec = lastBar.time / 1000;
+    var rounded = data.ts;
+    var lastBarSec = Number(lastBar.time) + resolution * 60000;
     var _lastBar;
-
+    // return;
     if (rounded > lastBarSec) {
         // create a new candle, use last close as open **PERSONAL CHOICE**
         _lastBar = {
-            time: rounded * 1000,
-            open: lastBar.close,
-            high: lastBar.close,
-            low: lastBar.close,
-            close: data.price,
+            close: data.close,
+            high: data.high,
+            low: data.low,
+            open: data.open,
+            time: data.ts,
             volume: data.volume
         };
     } else {
         // update lastBar candle!
-        if (data.price < lastBar.low) {
-            lastBar.low = data.price;
-        } else if (data.price > lastBar.high) {
-            lastBar.high = data.price;
+        if (data.low < lastBar.low) {
+            lastBar.low = data.low;
+        } else if (data.high > lastBar.high) {
+            lastBar.high = data.high;
         }
-
-        lastBar.volume += data.volume;
-        lastBar.close = data.price;
+        lastBar.volume = data.amount;
+        lastBar.close = data.close;
         _lastBar = lastBar;
     }
     return _lastBar;

@@ -1,13 +1,12 @@
 @import '~assets/stylus/variable.styl';
-$colorSize = #9BA0AC;
 .pos {
     width: 100%;
     min-height: 800px;
-    background-color: #1b212d;
+    background-color: $KBg;
     &_top {
         height: 120px;
         width: 100%;
-        background-color: #191E28;
+        background-color: $KSubBg;
         padding: 14px 0 0 0;
         &_t {
             padding: 0 16px;
@@ -35,7 +34,7 @@ $colorSize = #9BA0AC;
                 position: absolute;
                 display: flex;
                 justify-content: space-between;
-                background-color: #191E28;
+                background-color: $KSubBg;
                 align-items: center;
                 padding: 0 16px;
                 height: 34px;
@@ -47,7 +46,7 @@ $colorSize = #9BA0AC;
                     width: 44px;
                     height: 18px;
                     border-radius: 9px;
-                    color: $colorSize;
+                    color: $KSize;
                     &.active {
                         color: $write;
                         background: linear-gradient(left, #2db5ff, #2c71fc);
@@ -63,14 +62,17 @@ $colorSize = #9BA0AC;
                 height: 100%;
                 left: 0;
                 top: 108%;
-                background-color: #191E28;
+                background-color: $KSubBg;
                 // transform: translateY(-100%);
                 button {
                     width: 44px;
                     height: 18px;
                     border-radius: 9px;
-                    color: $colorSize;
+                    color: $KSize;
                     margin-right: 6px;
+                    &.active {
+                        color: $write;
+                    }
                 }
             }
             .moreIndex-leave-active, .moreIndex-enter-active {
@@ -79,6 +81,36 @@ $colorSize = #9BA0AC;
             .moreIndex-enter, .moreIndex-leave-to {
                 transform: translateY(-100%);
                 opacity: 0;
+            }
+        }
+    }
+    .selectWrap {
+        background-color: $KSub1Bg;
+        color: $write;
+        h2 {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            height: 46px;
+        }
+        .selectList {
+            display: flex;
+            padding: 16px;
+            li {
+                // width: 22.6%;
+                text-align: center;
+                border: 1px solid $KBg;
+                border-radius: 4px;
+                margin-right: 3.2%;
+                padding: 2px;
+                .coin {
+                    font-size: 10px;
+                    margin-bottom: 2px;
+                }
+                .price {
+                    font-size: 8px;
+                }
             }
         }
     }
@@ -92,7 +124,7 @@ $colorSize = #9BA0AC;
             position: relative;
             width: 100%;
             height: 50px;
-            background-color: #191E28;
+            background-color: $KSubBg;
             &_wrap {
                 display: flex;
                 justify-content: space-between;
@@ -106,9 +138,9 @@ $colorSize = #9BA0AC;
                         align-items: center;
                         justify-content: center;
                         font-size: 16px;
-                        color: $colorSize;
+                        color: $KSize;
                     }
-                    &.router-link-exact-active {
+                    &.active {
                         p {
                             color: $blue;
                         }
@@ -130,7 +162,7 @@ $colorSize = #9BA0AC;
         }
     }
     .handWrap {
-        background-color: #191E28;
+        background-color: $KSubBg;
         width: 100%;
         display: flex;
         align-items: center;

@@ -27,6 +27,14 @@ const router = new Router({
             }
         },
         {
+            path: "/service", //联系客服
+            name: "Service",
+            meta: { id: 1.1 },
+            components: {
+                default: () => import("views/Home/Service")
+            }
+        },
+        {
             path: "/hot", //热门活动
             name: "Hot",
             meta: { id: 1.1 },
@@ -135,20 +143,20 @@ const router = new Router({
             name: "position",
             meta: { id: 3 },
             component: () => import("views/positions"),
-            children: [
-                {
-                    path: "/position",
-                    name: "Capital",
-                    meta: { id: 3.1 },
-                    component: () => import("views/positions/Capital")
-                },
-                {
-                    path: "/position/intord",
-                    name: "Intord",
-                    meta: { id: 3.2 },
-                    component: () => import("views/positions/Intord")
-                }
-            ]
+            // children: [
+            //     {
+            //         path: "/position",
+            //         name: "Capital",
+            //         meta: { id: 3.1 },
+            //         component: () => import("views/positions/Capital")
+            //     },
+            //     {
+            //         path: "/position/intord",
+            //         name: "Intord",
+            //         meta: { id: 3.2 },
+            //         component: () => import("views/positions/Intord")
+            //     }
+            // ]
         },
         {
             path: "/chat", //持仓
