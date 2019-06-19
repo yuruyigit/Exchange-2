@@ -20,16 +20,10 @@ export default {
     };
   },
   created() {
-    // this.Socket = new WBT();
   },
   mounted() {
-    let _this = this;
-    // setTimeout(() => {
-    //   _this.Socket.isReconnect = true;
-    // //   _this.Socket.close();
-
-    //   _this.Socket.initWs();
-    // }, 1000);
+//    this.Socket = new WBT({ url: "testSocket" });
+//    this.Socket.initWs();
   },
   components: {
     Footer
@@ -57,27 +51,6 @@ export default {
     flex: 1;
     &_wrapper {
       width: 100%;
-    }
-    .slide-right-enter-active, .slide-right-leave-active, .slide-left-enter-active, .slide-left-leave-active {
-      will-change: transform;
-      transition: all 500ms;
-      position: absolute;
-    }
-    .slide-right-enter {
-      opacity: 0;
-      transform: translate3d(-100%, 0, 0);
-    }
-    .slide-right-leave-active {
-      opacity: 0;
-      transform: translate3d(100%, 0, 0);
-    }
-    .slide-left-enter {
-      opacity: 0;
-      transform: translate3d(100%, 0, 0);
-    }
-    .slide-left-leave-active {
-      opacity: 0;
-      transform: translate3d(-100%, 0, 0);
     }
   }
 }

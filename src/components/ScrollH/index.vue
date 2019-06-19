@@ -175,7 +175,7 @@ export default {
         }
       });
 
-      //   // 是否派发滚动事件
+      // 是否派发滚动事件
       if (this.listenScroll || this.pulldown || this.pullup) {
         let me = this;
         this.scroll.on("scroll", pos => {
@@ -216,7 +216,6 @@ export default {
           //this.scroll.finishPullUp()
         });
       }
-
       // 是否派发列表滚动开始的事件
       if (this.beforeScroll) {
         this.scroll.on("beforeScrollStart", () => {

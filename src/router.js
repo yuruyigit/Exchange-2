@@ -37,7 +37,7 @@ const router = new Router({
         {
             path: "/hot", //热门活动
             name: "Hot",
-            meta: { id: 1.1 },
+            meta: { id: 1.2 },
             components: {
                 default: () => import("views/Home/HotActive")
             }
@@ -45,7 +45,7 @@ const router = new Router({
         {
             path: "/guide", //新手引导
             name: "NoviceGuide",
-            meta: { id: 1.2 },
+            meta: { id: 1.3 },
             components: {
                 default: () => import("views/Home/NoviceGuide")
             }
@@ -53,7 +53,7 @@ const router = new Router({
         {
             path: "/guide/swiper", //引导swiper
             name: "GuideSwiper",
-            meta: { id: 1.21 },
+            meta: { id: 1.31 },
             components: {
                 default: () => import("views/Home/GuideSwiper")
             }
@@ -61,7 +61,7 @@ const router = new Router({
         {
             path: "/asked", //新手引导子页面
             name: "Asked",
-            meta: { id: 1.22 },
+            meta: { id: 1.32 },
             components: {
                 default: () => import("views/Home/Asked")
             }
@@ -69,7 +69,7 @@ const router = new Router({
         {
             path: "/asked/:type",
             name: "Asked",
-            meta: { id: 1.23 },
+            meta: { id: 1.33 },
             components: {
                 default: () => import("views/Home/Asked")
             }
@@ -77,15 +77,36 @@ const router = new Router({
         {
             path: "/disciple", //我的徒弟
             name: "Disciple",
-            meta: { id: 1.3 },
+            meta: { id: 1.4 },
             components: {
                 default: () => import("views/Home/Disciple")
             }
         },
         {
+            path: "/otc", //充值OTC
+            name: "Otc",
+            meta: { id: 1.5 },
+            component: () => import("views/Home/Otc"),
+            children: [
+                {
+                    path: "/otc",
+                    name: "Merchant",
+                    meta: { id: 1.51 },
+                    component: () => import("views/Home/Otc/Merchant")
+                },
+                {
+                    path: "/otc/wallet",
+                    name: "Wallet",
+                    meta: { id: 1.52 },
+                    component: () => import("views/Home/Otc/Wallet")
+                }
+            ]
+        },
+
+        {
             path: "/news", //行业快讯
             name: "News",
-            meta: { id: 1.4 },
+            meta: { id: 1.6 },
             components: {
                 default: () => import("views/Home/News")
             }
@@ -142,7 +163,7 @@ const router = new Router({
             path: "/position", //交易
             name: "position",
             meta: { id: 3 },
-            component: () => import("views/positions"),
+            component: () => import("views/positions")
             // children: [
             //     {
             //         path: "/position",

@@ -22,6 +22,7 @@ import {
     SwipeItem,
     Popup
 } from "vant";
+import VueClipboard from "vue-clipboard2";
 import VueI18n from "vue-i18n";
 import FastClick from "fastclick";
 import "./common/TollClass/resize";
@@ -53,7 +54,8 @@ Vue.use(VueI18n)
     .use(Toast)
     .use(Swipe)
     .use(SwipeItem)
-    .use(Popup);
+    .use(Popup)
+    .use(VueClipboard);
 const i18n = new VueI18n({
     locale: store.state.lang,
     messages: {

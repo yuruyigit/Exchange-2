@@ -1,0 +1,180 @@
+@import '~assets/stylus/variable';
+.otc {
+    &_wrapper {
+        width: 100%;
+    }
+}
+// OTC 交易
+.merchant {
+    width: 100%;
+    padding: 0 18px;
+    &_title {
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 15px;
+        color: $color3;
+        .link {
+            font-size: 13px;
+            color: $ablue;
+            text-decoration: underline;
+        }
+    }
+    &_single {
+        .single {
+            width: 100%;
+            height: 172px;
+            margin-bottom: 16px;
+            box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            &_t {
+                padding: 14px 14px 6px 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                &_l {
+                    padding: 1px 0;
+                    height: 36px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .name {
+                        font-size: 16px;
+                        color: $color3;
+                    }
+                    &_b {
+                        display: flex;
+                        p {
+                            padding: 0 6px;
+                            color: $color9;
+                            &:first-child {
+                                padding-left: 0;
+                                line-1px($color9, 100%, 100%);
+                            }
+                        }
+                    }
+                }
+                &_r {
+                    button {
+                        width: 56px;
+                        height: 23px;
+                        border-radius: 4px;
+                        font-size: 13px;
+                        color: $ablue;
+                        border: 1px solid #2C85FD;
+                    }
+                }
+            }
+            &_m {
+                width: 100%;
+                height: 74px;
+                background-color: #F5FAFF;
+                font-size: 13px;
+                color: $color6;
+                display: flex;
+                justify-content: space-between;
+                padding: 14px;
+                &_l {
+                    height: 45px;
+                    position: relative;
+                    .tips {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        color: $ablue;
+                    }
+                }
+                &_r {
+                    display: flex;
+                    height: 45px;
+                    .price {
+                        color: $color3;
+                    }
+                }
+            }
+            &_b {
+                height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 14px;
+                &_l {
+                    font-size: 12px;
+                    color: $color9;
+                    display: flex;
+                    align-items: center;
+                    .icon {
+                        color: $color3;
+                        display: flex;
+                        align-items: center;
+                        padding: 0 8px;
+                        img {
+                            width: 20px;
+                            margin-right: 6px;
+                        }
+                    }
+                }
+                &_r {
+                    button {
+                        width: 76px;
+                        height: 26px;
+                        background: url('../../../assets/Images/Otc/buy_btn.png') no-repeat center / cover;
+                        color: $write;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
+// 钱包转账
+.wallet {
+    padding: 24px;
+    &_code {
+        width: 100%;
+        text-align: center;
+        img {
+            width: 180px;
+            padding: 16px;
+        }
+        p {
+            font-size: 15px;
+            color: $color3;
+            padding: 6px;
+        }
+    }
+    &_hash {
+        margin-top: 18px;
+        width: 100%;
+        height: 124px;
+        font-size: 15px;
+        background: url('../../../assets/Images/Otc/bg_usdt.png') no-repeat center / cover;
+        cursor: pointer;
+        .hash {
+            width: 100%;
+            text-align: center;
+            padding-top: 26px;
+            color: $color3;
+        }
+        .copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 48px;
+            color: $color6;
+        }
+    }
+    &_intord {
+        margin-top: 16px;
+        color: $color3;
+        h2 {
+            font-size: 15px;
+        }
+        p {
+            margin-top: 8px;
+            font-size: 13px;
+            line-height: 24px;
+            display: flex;
+        }
+    }
+}

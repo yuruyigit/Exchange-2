@@ -1,6 +1,6 @@
 <template>
   <div class="legal container">
-    <div class="legal_left">
+    <router-link to="/otc" tag="div" class="legal_left">
       <h2>
         <span>法币</span>
         <span class="color-blue">交易</span>
@@ -10,7 +10,7 @@
         立即充值
         <img src="~assets/Images/home/btn_more.png" alt>
       </p>
-    </div>
+    </router-link>
     <div class="legal_right">
       <img src="~assets/Images/home/Bitmap.png" alt>
     </div>
