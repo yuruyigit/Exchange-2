@@ -87,6 +87,7 @@
     .selectWrap {
         background-color: $KSub1Bg;
         color: $write;
+        padding: 0 18px;
         h2 {
             display: flex;
             width: 100%;
@@ -96,22 +97,48 @@
         }
         .selectList {
             display: flex;
-            padding: 16px;
+            flex-wrap: wrap;
+            padding-top: 12px;
+            padding-bottom: 20px;
             li {
-                // width: 22.6%;
+                width: 102px;
+                height: 44px;
                 text-align: center;
                 border: 1px solid $KBg;
                 border-radius: 4px;
-                margin-right: 3.2%;
-                padding: 2px;
+                margin-right: 16px;
+                margin-bottom: 16px;
+                padding: 6px;
+                &:nth-child(3n) {
+                    margin-right: 0;
+                }
+                &.active {
+                    background: linear-gradient(left, #2DB5FF, #2C68FC);
+                }
                 .coin {
-                    font-size: 10px;
+                    font-size: 15px;
                     margin-bottom: 2px;
                 }
                 .price {
-                    font-size: 8px;
+                    font-size: 13px;
+                    color: rgba(255, 255, 255, 0.8);
                 }
             }
+        }
+        .selectBtn {
+            width: 100%;
+            height: 44px;
+            border: 1px solid $Kborder;
+            border-radius: 22px;
+            font-size: 16px;
+            color: $ablue;
+        }
+        .closeBtn {
+            width: 100%;
+            height: 48px;
+            font-size: 14px;
+            color: $KSize;
+            text-decoration: underline;
         }
     }
     .k_line {

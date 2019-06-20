@@ -5,7 +5,7 @@
       <p class="link">什么是OTC？</p>
     </div>
     <div class="merchant_single">
-      <div class="single" v-for="item in List" :key="item">
+      <div class="single" v-for="item in List" :key="item" @click="toRecharge">
         <div class="single_t">
           <div class="single_t_l">
             <p class="name">BEEPAY</p>
@@ -56,6 +56,11 @@ export default {
       List: [1, 2, 3]
     };
   },
-  methods: {}
+  methods: {
+    //跳转到充值页面
+    toRecharge() {
+      this.$router.push("/recharge");
+    }
+  }
 };
 </script>

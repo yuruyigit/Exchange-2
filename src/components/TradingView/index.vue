@@ -5,7 +5,7 @@
 <script>
 // import Datafeed from "./api/index";
 import Datafeed from "./pro/index";
-import { setTimeout, setInterval } from 'timers';
+import { setTimeout, setInterval } from "timers";
 function getLanguageFromURL() {
   const regex = new RegExp("[\\?&]lang=([^&#]*)");
   const results = regex.exec(window.location.search);
@@ -84,7 +84,6 @@ export default {
   },
 
   mounted() {
-     
     this._initTV();
   },
   methods: {
@@ -165,6 +164,7 @@ export default {
           "volume.volume.color.1": "#1DBC8C",
           "volume.volume.transparency": 255
         },
+
         overrides: {
           volumePaneSize: "medium", // 支持的值: large, medium, small, tiny
           "paneProperties.background": "#1b212d",

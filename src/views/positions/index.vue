@@ -9,11 +9,29 @@
             <p class="coin">BTC/USDT</p>
             <p class="price">{{detailData.close}}</p>
           </li>
+          <li class="active">
+            <p class="coin">ETH/USDT</p>
+            <p class="price">296.62</p>
+          </li>
+          <li>
+            <p class="coin">ETH/USDT</p>
+            <p class="price">296.62</p>
+          </li>
+          <li>
+            <p class="coin">ETH/USDT</p>
+            <p class="price">296.62</p>
+          </li>
+          <li>
+            <p class="coin">ETH/USDT</p>
+            <p class="price">296.62</p>
+          </li>
           <li>
             <p class="coin">ETH/USDT</p>
             <p class="price">296.62</p>
           </li>
         </ul>
+        <button class="selectBtn">切换至实际盘</button>
+        <button class="closeBtn" @click="show=false">点击收起</button>
       </div>
     </van-popup>
     <!-- @click="show=!show" -->

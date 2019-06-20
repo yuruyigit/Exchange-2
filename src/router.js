@@ -111,6 +111,14 @@ const router = new Router({
                 default: () => import("views/Home/News")
             }
         },
+        {
+            path: "/recharge", //充币
+            name: "Recharge",
+            meta: { id: 1.9 },
+            components: {
+                default: () => import("views/Recharge")
+            }
+        },
 
         {
             path: "/login", //登录
