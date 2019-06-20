@@ -59,13 +59,19 @@
       </div>
     </div>
     <div class="recharge_tips">
-        <h2>注意事项</h2>
-        <p><span>1、</span>为了保证资金顺利到账，请务必在转账时输入转账附言</p>
-        <p><span>2、</span>请按照填写的姓名、付款金额、转账方式进行付款方可快速到账、否则资金将无法及时到账</p>
-        <p><span>3、</span>如果您的转账5分钟内未能到账，请您联系客服处理；订单的有效时间为20分钟，如您已转账但订单失效，请您联系客服处理</p>
+      <h2>注意事项</h2>
+      <p>
+        <span>1、</span>为了保证资金顺利到账，请务必在转账时输入转账附言
+      </p>
+      <p>
+        <span>2、</span>请按照填写的姓名、付款金额、转账方式进行付款方可快速到账、否则资金将无法及时到账
+      </p>
+      <p>
+        <span>3、</span>如果您的转账5分钟内未能到账，请您联系客服处理；订单的有效时间为20分钟，如您已转账但订单失效，请您联系客服处理
+      </p>
     </div>
     <div class="recharge_btn">
-        <button>确定</button>
+      <button>确定</button>
     </div>
   </div>
 </template>
@@ -96,7 +102,7 @@ export default {
       this.$router.push("/intord/otc_intord");
     },
     clickLeft() {
-      this.$router.back(-1);
+      this.$router.push("/otc");
     }
   }
 };
