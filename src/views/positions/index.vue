@@ -195,7 +195,7 @@ export default {
     resolutionSocket(resolution) {
       let type = typeof resolution,
         datas = {
-          "btcusdt-ticket": "0",
+          "btcusdt-ticker": "0",
           "btcusdt-depth": "0"
         };
       if (type == "number") {

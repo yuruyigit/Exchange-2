@@ -239,40 +239,62 @@ const router = new Router({
             component: () => import("views/Me/Fund")
         },
         {
+            path: "/me/msg", //消息中心
+            name: "Msg",
+            meta: { id: 5.3 },
+            component: () => import("views/Me/Msg"),
+            children: [
+                {
+                    path: "/me/msg",//系统消息
+                    name: "SysMsg",
+                    meta: { id: 5.31 },
+                    component: () =>
+                        import("views/Me/Msg/Sys")
+                },
+                {
+                    path: "/me/msg/notic", //重置
+                    name: "NoticMsg",
+                    meta: { id: 5.32 },
+                    component: () =>
+                        import("views/Me/Msg/Notic")
+                }
+            ]
+        },
+        {
             path: "/me/setting", //账户设置
             name: "Setting",
-            meta: { id: 5.3 },
+            meta: { id: 5.4 },
             component: () => import("views/Me/Setting")
         },
         {
             path: "/me/setting/about", //关于我们
             name: "About",
-            meta: { id: 5.34 },
+            meta: { id: 5.44 },
             component: () => import("views/Me/Setting/About")
         },
         {
             path: "/me/security", //安全中心
             name: "Security",
-            meta: { id: 5.4 },
+            meta: { id: 5.5 },
             component: () => import("views/Me/Security")
         },
         {
             path: "/me/pwd", //修改登录密码
             name: "Pwd",
-            meta: { id: 5.41 },
+            meta: { id: 5.51 },
             component: () => import("views/Me/Security/Child/Pwd.vue"),
             children: [
                 {
                     path: "/me/pwd",
                     name: "PwdEdit",
-                    meta: { id: 5.42 },
+                    meta: { id: 5.52 },
                     component: () =>
                         import("views/Me/Security/Child/PwdEdit.vue")
                 },
                 {
                     path: "/me/pwd/reset", //重置
                     name: "PwdReset",
-                    meta: { id: 5.43 },
+                    meta: { id: 5.53 },
                     component: () =>
                         import("views/Me/Security/Child/PwdReset.vue")
                 }
@@ -281,19 +303,19 @@ const router = new Router({
         {
             path: "/me/edit/:type", //修改手机||邮箱
             name: "Edit",
-            meta: { id: 5.44 },
+            meta: { id: 5.54 },
             component: () => import("views/Me/Security/Child/Edit.vue")
         },
         {
             path: "/me/edit1/:type", //修改手机||邮箱 step1
             name: "Edit1",
-            meta: { id: 5.45 },
+            meta: { id: 5.55 },
             component: () => import("views/Me/Security/Child/Edit1.vue")
         },
         {
             path: "/me/user", //我的
             name: "User",
-            meta: { id: 5.1 },
+            meta: { id: 5.6 },
             components: {
                 default: () => import("views/Me/User"),
                 mainfooter: Footer

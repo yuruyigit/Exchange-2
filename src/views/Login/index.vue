@@ -15,7 +15,7 @@
         <input type="text" placeholder="输入验证码">
         <button class="inp_group_right" :disabled="isSend" @click="sendMsg">{{sendBtnText}}</button>
       </div>
-      <button class="from_btn" :disabled="isClick">登录</button>
+      <button class="from_btn" @click="login">登录</button>
       <router-link tag="p" to="/login/pwd" class="from_check">密码登录</router-link>
     </div>
   </div>
@@ -37,6 +37,19 @@ export default {
   created() {},
   components: {},
   methods: {
+    login() {
+      this.$http({
+        url: "/auth/authorize",
+        data: {
+          loginName: "1234567@qq.com",
+          loginPwd: this.$md5("123456")
+        },
+        method: "put",
+        pro: true
+      }).then(res => {
+        this.$lStore.set("token", res.data.token);
+      });
+    },
     //发送验证
     sendMsg() {
       this.isSend = true;

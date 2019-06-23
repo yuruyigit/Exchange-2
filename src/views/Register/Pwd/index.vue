@@ -3,7 +3,7 @@
     <h2 class="pwd_title">设置用户密码</h2>
     <div class="pwd_wrap">
       <div class="inp_group border-1px">
-        <input type="password" placeholder="输入新账户密码">
+        <input type="password" placeholder="输入新账户密码" v-model="pwd">
       </div>
       <button class="from_btn" :disabled="isClick" @click="subMit">登录</button>
       <p class="pwd_wrap_back" @click="back">返回上一页</p>
@@ -12,16 +12,43 @@
 </template>
 
 <script>
+import { isPwd } from "common/TollClass/func";
 export default {
   data() {
     return {
-      isClick: false //登录按钮是否可点击
+      isClick: false, //登录按钮是否可点击,
+      pwd: ""
     };
   },
   components: {},
   methods: {
     subMit() {
-      console.log("pwd");
+      let req = this.$lStore.get("req");
+      let err = isPwd(this.pwd);
+      if (err) {
+        this.$toast(err);
+      } else {
+        req.loginPwd = this.$md5(this.pwd);
+        this.$lStore.remove("req");
+        // this.register(req);
+      }
+    },
+    register(req) {
+      this.$http({
+        url: "/auth/register",
+        method: "post",
+        data: req,
+        pro: true
+      }).then(res => {
+        if (res.status == 200) {
+          this.$toast("恭喜你注册成功");
+
+          this.$lStore.removeItem("req");
+          this.$lStore.set("userInfo", data);
+          this.$lStore.set("token", data.token);
+          this.$router.push("/");
+        }
+      });
     },
     back() {
       this.$router.go(-1);

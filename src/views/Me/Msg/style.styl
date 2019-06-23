@@ -1,0 +1,39 @@
+@import '~assets/stylus/variable.styl';
+.msg {
+    &_wrapper {
+        width: 100%;
+        .sys {
+            padding-left: 16px;
+            &_single {
+                min-height: 82px;
+                padding: 20px 16px;
+                font-size: 13px;
+                color: $color9;
+                border-1px($colorE, 100%);
+                .top {
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    &_roud {
+                        width: 4px;
+                        height: 4px;
+                        background-color: $red;
+                        border-radius: 2px;
+                        position: absolute;
+                        left: -12px;
+                        top: 50%;
+                        margin-top: -2px;
+                    }
+                    &_title {
+                        font-size: 16px;
+                        color: $color3;
+                    }
+                }
+                .cont {
+                    margin-top: 5px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}

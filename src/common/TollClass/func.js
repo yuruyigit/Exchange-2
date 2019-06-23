@@ -267,18 +267,45 @@ function isAction(str, err) {
     }
     return false;
 }
-
+// if (str.trim()) {
+// } else {
+//     return "密码不能为空";
+// }
+// return false;
 function isEmail(str, err) {
     //email
-    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-    return reg.test(str);
+    if (str.trim()) {
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+        let isTrue = reg.test(str);
+        if (!isTrue) {
+            return err ? err : "邮箱格式有误！";
+        }
+    } else {
+        return "邮箱不能为空";
+    }
+    return false;
 }
+function isAccount(str) {
+    if (str.trim()) {
+        if (isEmail(str) && isPhone(str)) {
+            return "账号为手机号或邮箱！";
+        }
+    } else {
+        return "账号不能为空";
+    }
+    return false;
+}
+
 function isPwd(str, err) {
-    //密码
-    var reg = /^\w{6,20}$/;
-    let isTrue = reg.test(str);
-    if (!isTrue) {
-        return err ? err : "密码为6-20位数字，字母，下划线";
+    if (str.trim()) {
+        //密码
+        var reg = /^\w{6,20}$/;
+        let isTrue = reg.test(str);
+        if (!isTrue) {
+            return err ? err : "密码为6-20位数字，字母，下划线";
+        }
+    } else {
+        return "密码不能为空";
     }
     return false;
 }
@@ -570,6 +597,7 @@ export {
     lStore,
     sStore,
     isAction,
+    isAccount,
     isEmail,
     isPwd,
     isCode,

@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="home_top container">
-      <HomeHead/>
-      <Swipe/>
+      <HomeHead />
+      <Swipe :bannerList="bannerList"/>
       <ModulInfo/>
       <Notice/>
       <Coin/>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import bannerImg from "Images/home/banner.png";
 import HomeHead from "components/Home/HomeHead";
 import Swipe from "components/Home/Swipe";
 import ModulInfo from "components/Home/ModulInfo";
@@ -22,10 +23,33 @@ import Coin from "components/Home/Coin";
 import Legal from "components/Home/Legal";
 import News from "components/Home/News";
 import Tips from "components/Tips";
-import Axios from "axios";
+
 export default {
   data() {
-    return {};
+    return {
+      bannerList: []
+    };
+  },
+  
+  created() {
+    this.getBanner();
+  },
+  methods: {
+    getBanner() {
+      this.$http({
+        url: "/v1/banner/",
+        method: "get",
+        data: { type: 1 },
+      }).then(res => {
+        if (res.status == 200) {
+          res.data.map(item => {
+            console.log(item);
+            item.picPath = bannerImg;
+          });
+          this.bannerList = res.data;
+        }
+      });
+    }
   },
   components: {
     HomeHead,
@@ -36,18 +60,6 @@ export default {
     Legal,
     News,
     Tips
-  },
-  created() {
-    this.getBanner();
-  },
-  methods: {
-    getBanner() {
-      this.$Get({ url: "/v1/banner/", data: { type: 2 }, pro: true }).then(
-        res => {
-          console.log(res);
-        }
-      );
-    }
   }
 };
 </script>

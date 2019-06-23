@@ -2,7 +2,7 @@
   <div class="header">
     <div class="group" @click="toLogin">
       <p class="group_avatar">
-        <img src="~assets/Images/home/icon_hot.png" alt>
+        <img :src="userInfo.portrait" alt>
       </p>
       <p v-show="false" class="group_notLogin">{{$t('notLogin')}}</p>
       <div class="group_login">
@@ -21,11 +21,14 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {};
   },
-
+  computed: {
+    ...mapState(["userInfo"])
+  },
   methods: {
     toLogin() {
       this.$router.push("/login");

@@ -14,11 +14,11 @@
     <div class="from">
       <div class="from_wrap">
         <transition :name="transitionName">
-          <router-view/>
+          <router-view ref="from"/>
         </transition>
       </div>
 
-      <button class="from_btn" :disabled="isClick" @click="subMit">登录</button>
+      <button class="from_btn" :disabled="isClick" @click="subMit">下一步</button>
       <div class="agreement">
         <span>注册即表示同意</span>
         <router-link to="/intord/protocol" class="color-blue">《平台服务协议》</router-link>
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import { setInterval, clearInterval } from "timers";
 export default {
   data() {
     return {
@@ -38,7 +37,8 @@ export default {
     };
   },
   created() {
-    console.log(this.type);
+    console.log(this.$md5("123456"));
+    // this.register();
   },
   components: {},
   methods: {
@@ -48,8 +48,29 @@ export default {
       this.$router.push(`/register${type}`);
     },
     subMit() {
-      this.$router.push(`/register/pwd`);
-    }
+      let regData = this.$refs.from.fromData,
+        req = {};
+        
+      if (regData.email) {
+        req = {
+          emailCode: regData.code,
+          loginName: regData.email,
+          loginPwd: regData.pwd,
+          type: 1
+        };
+      } else if (regData.phone) {
+        req = {
+          mobileCode: regData.code,
+          loginName: regData.email,
+          loginPwd: regData.pwd,
+          type: 0
+        };
+      }
+      this.$lStore.set('req',req)
+    //   this.register(req);
+        this.$router.push(`/register/pwd`);
+    },
+   
   },
   watch: {
     $route(to, from) {

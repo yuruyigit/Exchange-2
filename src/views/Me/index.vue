@@ -5,10 +5,10 @@
       <div class="me_top_info">
         <router-link tag="div" to="/me/user" class="left">
           <p class="left_avatar">
-            <img src="~assets/Images/avatar.jpg" alt>
+            <img :src="userInfo.portrait" alt>
           </p>
           <div class="left_user">
-            <p>15560048800</p>
+            <p>{{userInfo.loginName}}</p>
             <p>实盘账户</p>
           </div>
         </router-link>
@@ -45,14 +45,26 @@
 
 <script>
 import { meList } from "common/staticData";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       meList: meList
     };
   },
+  computed: {
+    ...mapState(["userInfo"])
+  },
+  created() {
+    this.getUser();
+  },
   components: {},
   methods: {
+    getUser() {
+      this.$http({ url: "/v1/position/list", method: "get" }).then(res => {
+        console.log(res);
+      });
+    },
     clickLeft() {
       this.$router.push("/");
     }

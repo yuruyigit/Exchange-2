@@ -1,7 +1,8 @@
 import Vue from "vue";
-import { Post, Get } from "./Api";
+import { Post, Get, http } from "./Api";
 import { lStore, sStore } from "./TollClass/func";
 import EventListener from "./event-listener";
+import md5 from "md5";
 function ScrollTop(anim = true) {
     if (anim) {
         let scrollToptimer = setInterval(function() {
@@ -26,4 +27,6 @@ Vue.prototype.$lStore = lStore;
 Vue.prototype.$sStore = sStore;
 Vue.prototype.$Post = Post;
 Vue.prototype.$Get = Get;
+Vue.prototype.$http = http;
 Vue.prototype.$EventListener = EventListener({});
+Vue.prototype.$md5 = md5;

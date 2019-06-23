@@ -265,39 +265,45 @@ export const askedData = {
 export const meList = [
     {
         title: "投资报表",
-        icon: require("../assets/Images/me/icon_1.png"),
+        icon: require("../assets/Images/me/icon_0.png"),
         link: "/me/report",
-        id: 1
+        id: 'report0'
     },
     {
         title: "资金明细",
-        icon: require("../assets/Images/me/icon_2.png"),
+        icon: require("../assets/Images/me/icon_1.png"),
         link: "/me/fund",
-        id: 2
+        id: 'fund1'
+    },
+    {
+        title: "消息中心",
+        icon: require("../assets/Images/me/icon_2.png"),
+        link: "/me/msg",
+        id: 'msg2'
     },
     {
         title: "新手引导",
         icon: require("../assets/Images/me/icon_3.png"),
         link: "/guide",
-        id: 3
+        id: "guide3"
     },
     {
         title: "联系客服",
         icon: require("../assets/Images/me/icon_4.png"),
         link: "/service",
-        id: 4
+        id: 'service4'
     },
     {
         title: "安全中心",
         icon: require("../assets/Images/me/icon_5.png"),
         link: "/me/security",
-        id: 5
+        id: 'security5'
     },
     {
         title: "账户设置",
         icon: require("../assets/Images/me/icon_6.png"),
         link: "/me/setting",
-        id: 6
+        id: 'setting6'
     }
 ];
 

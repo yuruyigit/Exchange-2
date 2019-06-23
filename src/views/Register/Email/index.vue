@@ -1,10 +1,10 @@
 <template>
   <div class="phone">
     <div class="inp_group border-1px">
-      <input type="text" placeholder="输入邮箱账号">
+      <input type="text" placeholder="输入邮箱账号" v-model="fromData.email">
     </div>
     <div class="inp_group border-1px">
-      <input type="text" placeholder="输入邮箱验证码">
+      <input type="text" placeholder="输入邮箱验证码" v-model="fromData.code">
       <button class="inp_group_right" :disabled="isSend" @click="sendMsg">{{sendBtnText}}</button>
     </div>
   </div>
@@ -16,7 +16,11 @@ export default {
     return {
       isSend: false, //发送验证码按钮是否可点击
       sendBtnText: "获取验证码",
-      timer: null
+      timer: null,
+      fromData: {
+        email: "",
+        code: "123456"
+      }
     };
   },
   components: {},

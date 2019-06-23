@@ -13,7 +13,7 @@
         <div :style="styls" class="tabs_line"></div>
       </div>
       <div class="nav_bar_r">
-        <img src="~assets/Images/Otc/icon_detail.png" alt>
+        <img v-show="showR" src="~assets/Images/Otc/icon_detail.png" alt>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@ export default {
   components: {},
   methods: {
     _initPage() {
-      if (this.$route.name == "Wallet") {
+      if (this.$route.name == "Wallet" || this.$route.name == 'NoticMsg') {
         this.tabClick(1);
       }
     },

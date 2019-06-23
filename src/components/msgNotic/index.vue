@@ -1,7 +1,7 @@
 <template>
   <div class="msg">
     <ul class="msg_list" :class="{anim:animate==true}">
-      <li v-for="item in items" :key="item.name">{{item.name}}</li>
+      <li v-for="item in List" :key="item.id">{{item.title}}</li>
     </ul>
   </div>
 </template>
@@ -13,26 +13,37 @@ export default {
     return {
       timer: null,
       animate: false,
-      items: [
-        { name: "BTC大涨，将要涨破10000USDT！" },
-        { name: "ETH顺势增长，有望回归巅峰价格！" },
-        { name: "币圈趋势打好，可以适当投入资金小赚一笔！" }
+      List: [
+        { title: "BTC大涨，将要涨破10000USDT！", id: 1 },
+        { title: "ETH顺势增长，有望回归巅峰价格！", id: 2 },
+        { title: "币圈趋势打好，可以适当投入资金小赚一笔！", id: 3 }
       ]
     };
   },
   created() {
     this.timer = setInterval(this.scroll, 3000);
+    this.getNotice();
   },
   destroyed() {
     clearInterval(this.timer);
   },
   components: {},
   methods: {
+    getNotice() {
+      this.$http({
+        url: "/v1/announcement/list",
+        method: "get",
+      }).then(res => {
+        if (res.status == 200) {
+          this.List = res.data;
+        }
+      });
+    },
     scroll() {
       this.animate = true;
       setTimeout(() => {
-        this.items.push(this.items[0]);
-        this.items.shift();
+        this.List.push(this.List[0]);
+        this.List.shift();
         this.animate = false;
       }, 500);
     }
