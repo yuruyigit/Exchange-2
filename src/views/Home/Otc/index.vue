@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import NavBar from "components/NavBar/Otc";
+import NavBar from "components/NavBar/Switch";
 export default {
   data() {
     return {

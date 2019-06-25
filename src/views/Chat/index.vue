@@ -44,11 +44,28 @@
         </div>
         <div class="cont">
           <transition :name="transitionName">
-            <router-view/>
+            <router-view :showDialog="showDialog"/>
           </transition>
         </div>
       </div>
     </div>
+    <van-dialog v-model="show" title="确认平仓" show-cancel-button class="customDialog">
+      <p class="order">订单编号：123456</p>
+      <ul class="hold_dialog">
+        <li>
+          <p>浮动盈亏</p>
+          <p>+1.92</p>
+        </li>
+        <li>
+          <p>开仓价</p>
+          <p>5.8737</p>
+        </li>
+        <li>
+          <p>当前价</p>
+          <p>5.8737</p>
+        </li>
+      </ul>
+    </van-dialog>
   </div>
 </template>
 
@@ -59,7 +76,8 @@ export default {
     return {
       active: 0,
       styls: { left: 0 },
-      transitionName: "slide-left"
+      transitionName: "slide-left",
+      show: false
     };
   },
   created() {
@@ -67,6 +85,9 @@ export default {
   },
   components: { NavBar },
   methods: {
+    showDialog() {
+      this.show = true;
+    },
     _initPage() {
       if (this.$route.name == "ChatList") {
         this.tabClick(1);

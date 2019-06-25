@@ -171,7 +171,7 @@ export default {
           stop: 20 // 刷新数据的过程中，回弹停留在距离顶部还有 20px 的位置
         },
         pullUpLoad: {
-          threshold: -20 // 在上拉到超过底部 20px 时，触发 pullingUp 事件
+          threshold: 40 // 在上拉到超过底部 20px 时，触发 pullingUp 事件
         }
       });
 

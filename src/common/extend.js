@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Post, Get, http } from "./Api";
-import { lStore, sStore } from "./TollClass/func";
+import { lStore, sStore, throttle } from "./TollClass/func";
 import EventListener from "./event-listener";
 import md5 from "md5";
 function ScrollTop(anim = true) {
@@ -25,6 +25,7 @@ function ScrollTop(anim = true) {
 Vue.prototype.$ScrollTop = ScrollTop;
 Vue.prototype.$lStore = lStore;
 Vue.prototype.$sStore = sStore;
+Vue.prototype.$throttle = throttle;
 Vue.prototype.$Post = Post;
 Vue.prototype.$Get = Get;
 Vue.prototype.$http = http;

@@ -46,7 +46,7 @@ export default {
   display: flex;
   flex-direction: column;
   .main {
-    overflow-y: auto;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     flex: 1;
     &_wrapper {

@@ -12,7 +12,7 @@
         </p>
         <p class="top_btn">
           <span :class="isColor(index)">-18.76</span>
-          <button>平仓</button>
+          <button @click="showDialog">平仓</button>
         </p>
       </li>
       <li class="bot">
@@ -41,6 +41,12 @@
 import iconBuy from "Images/chat/icon_buy.png";
 import iconSale from "Images/chat/icon_sale.png";
 export default {
+  props: {
+    showDialog: {
+      type: Function,
+      required: true
+    }
+  },
   data() {
     return {
       List: new Array(10)

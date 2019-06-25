@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home_top container">
-      <HomeHead />
+      <HomeHead/>
       <Swipe :bannerList="bannerList"/>
       <ModulInfo/>
       <Notice/>
@@ -30,7 +30,7 @@ export default {
       bannerList: []
     };
   },
-  
+
   created() {
     this.getBanner();
   },
@@ -39,7 +39,7 @@ export default {
       this.$http({
         url: "/v1/banner/",
         method: "get",
-        data: { type: 1 },
+        data: { type: 1 }
       }).then(res => {
         if (res.status == 200) {
           res.data.map(item => {

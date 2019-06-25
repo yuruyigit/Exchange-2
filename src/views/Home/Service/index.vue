@@ -41,7 +41,6 @@
 <script>
 import NavBar from "components/NavBar";
 import ScrollH from "components/ScrollH";
-import { setTimeout } from "timers";
 export default {
   data() {
     return {

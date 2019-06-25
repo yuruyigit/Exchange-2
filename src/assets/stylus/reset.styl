@@ -77,7 +77,6 @@ input {
     }
 }
 /* custom */
-
 .f-l {
     float: left;
 }
@@ -113,6 +112,9 @@ input {
 }
 .color3 {
     color: #333;
+}
+.color6 {
+    color: #666;
 }
 // 隐藏谷歌验证码
 .grecaptcha-badge {
@@ -177,5 +179,48 @@ input {
             -o-transform: scaleX(0.5);
             transform: scaleX(0.5);
         }
+    }
+}
+// dialog
+.customDialog {
+    width: 303px;
+    // hold
+    .van-dialog__header {
+        padding-top: 24px;
+        font-size: 20px;
+        color: #333;
+    }
+    .van-dialog__content {
+        padding: 20px 16px;
+        p {
+            line-height: 28px;
+            font-size: 13px;
+            text-align: center;
+        }
+        // hold
+        .order {
+            font-size: 14px;
+            color: #999;
+        }
+        .hold_dialog {
+            width: 180px;
+            margin: auto;
+            li {
+                display: flex;
+                p {
+                    font-size: 16px;
+                    width: 90px;
+                    &:first-child {
+                        color: #666;
+                    }
+                    &:last-child {
+                        color: #333;
+                    }
+                }
+            }
+        }
+    }
+    .van-button__text {
+        font-size: 14px;
     }
 }

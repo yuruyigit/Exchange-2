@@ -1,62 +1,27 @@
 <template>
   <div class="fund">
-    <NavBar title="我的持仓" fixed showL @clickLeft="clickLeft"/>
-    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-list
-        v-model="loading"
-        :finished="finished"
-        :offset="80"
-        finished-text="没有更多了"
-        @load="onLoad"
-      >
-        <div class="fund_list">
-          <ul class="fund_list_single border-1px">
-            <li class="left">
-              <p class="left_title">
-                <span>OTC交易（BEEPAY充币）</span>
-                <span :class="statusColor()">进行中</span>
-              </p>
-              <p class="left_shops">签约商户</p>
-              <p class="left_time">05-30 14:37:10</p>
-            </li>
-            <li class="right">+4000</li>
-          </ul>
-          <ul class="fund_list_single border-1px">
-            <li class="left">
-              <p class="left_title">
-                <span>OTC交易（BEEPAY充币）</span>
-                <span :class="statusColor(1)">已失效</span>
-              </p>
-              <p class="left_shops">签约商户</p>
-              <p class="left_time">05-30 14:37:10</p>
-            </li>
-            <li class="right">+4000</li>
-          </ul>
-          <ul class="fund_list_single border-1px">
-            <li class="left">
-              <p class="left_title">
-                <span>OTC交易（BEEPAY充币）</span>
-                <span :class="statusColor(2)">已完成</span>
-              </p>
-              <p class="left_shops">签约商户</p>
-              <p class="left_time">05-30 14:37:10</p>
-            </li>
-            <li class="right">+4000</li>
-          </ul>
-        </div>
-      </van-list>
-    </van-pull-refresh>
+    <NavBar :title="title" fixed showL @clickLeft="clickLeft"/>
+    <div class="fund_wrap">
+      <transition :name="transitionName">
+        <router-view/>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import NavBar from "components/NavBar";
+import NavBar from "components/NavBar/Switch";
 export default {
   data() {
     return {
       loading: false,
       finished: true,
-      isLoading: false
+      isLoading: false,
+      transitionName: "slide-left",
+      title: [
+        { title: "OTC交易", url: "/me/fund", left: 0 },
+        { title: "钱包转账", url: "/me/fund/wallet", left: 1 }
+      ]
     };
   },
   components: {
@@ -89,10 +54,17 @@ export default {
         this.$toast("刷新成功");
       }, 500);
     }
+  },
+  watch: {
+    $route(to, from) {
+      const toIndex = to.meta.id;
+      const fromIndex = from.meta.id;
+      this.transitionName = toIndex < fromIndex ? "slide-right" : "slide-left";
+    }
   }
 };
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
 @import './style';
 </style>

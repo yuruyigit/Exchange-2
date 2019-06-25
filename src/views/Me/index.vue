@@ -26,8 +26,8 @@
         <p class="num">26,580.00</p>
       </div>
       <div class="me_cont_btn">
-        <button>立即充币</button>
-        <button>提币</button>
+        <button @click="toUrl('/otc')">立即充币</button>
+        <button @click="toUrl('/withdraw')">提币</button>
       </div>
     </div>
     <div class="me_list">
@@ -40,6 +40,7 @@
         </template>
       </van-cell>
     </div>
+    
   </div>
 </template>
 
@@ -64,6 +65,9 @@ export default {
       this.$http({ url: "/v1/position/list", method: "get" }).then(res => {
         console.log(res);
       });
+    },
+    toUrl(url) {
+      this.$router.push(url);
     },
     clickLeft() {
       this.$router.push("/");

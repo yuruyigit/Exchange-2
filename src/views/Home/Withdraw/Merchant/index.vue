@@ -35,32 +35,25 @@
               <img src="~assets/Images/Otc/icon_bank.png" alt>
               网银
             </p>
-            <p class="icon">
+            <p class="icon" v-show="false">
               <img src="~assets/Images/Otc/icon_phone.png" alt>
               手机
             </p>
           </div>
           <div class="single_b_r">
-            <button>购买</button>
+            <button>出售</button>
           </div>
         </div>
       </div>
     </div>
-    <van-dialog
-      v-model="showOtc"
-      confirmButtonText="知道了"
-      confirmButtonColor="#2d9ef5"
-      class="customDialog"
-    >
+    <van-dialog v-model="showOtc" confirmButtonText="知道了" confirmButtonColor="#2d9ef5" class="customDialog">
       <p>OTC交易为场外交易，平台与商户签约，用户可通过平台与商户签约商户自由进行数字货币资产与法币买卖。</p>
       <p>如买方以法币（人民币）购买出售方提供的数字资产，如USDT</p>
     </van-dialog>
-    <Recharge ref="Recharge"/>
   </div>
 </template>
 
 <script>
-import Recharge from "components/Recharge";
 export default {
   data() {
     return {
@@ -68,14 +61,10 @@ export default {
       showOtc: false
     };
   },
-  components: {
-    Recharge
-  },
   methods: {
     //跳转到充值页面
     toRecharge() {
-      this.$refs.Recharge.showSelf();
-      //   this.$router.push("/recharge");
+      this.$router.push("/recharge");
     }
   }
 };

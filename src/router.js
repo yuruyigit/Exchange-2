@@ -97,8 +97,28 @@ const router = new Router({
                 {
                     path: "/otc/wallet",
                     name: "Wallet",
-                    meta: { id: 1.52 },
+                    meta: { id: 1.52, type: "sub" },
                     component: () => import("views/Home/Otc/Wallet")
+                }
+            ]
+        },
+        {
+            path: "/withdraw", //充值OTC
+            name: "Withdraw",
+            meta: { id: 1.5 },
+            component: () => import("views/Home/Withdraw"),
+            children: [
+                {
+                    path: "/Withdraw",
+                    name: "Merchant",
+                    meta: { id: 1.51 },
+                    component: () => import("views/Home/Withdraw/Merchant")
+                },
+                {
+                    path: "/Withdraw/wallet",
+                    name: "Wallet",
+                    meta: { id: 1.52, type: "sub" },
+                    component: () => import("views/Home/Withdraw/Wallet")
                 }
             ]
         },
@@ -172,20 +192,6 @@ const router = new Router({
             name: "position",
             meta: { id: 3 },
             component: () => import("views/positions")
-            // children: [
-            //     {
-            //         path: "/position",
-            //         name: "Capital",
-            //         meta: { id: 3.1 },
-            //         component: () => import("views/positions/Capital")
-            //     },
-            //     {
-            //         path: "/position/intord",
-            //         name: "Intord",
-            //         meta: { id: 3.2 },
-            //         component: () => import("views/positions/Intord")
-            //     }
-            // ]
         },
         {
             path: "/chat", //持仓
@@ -236,7 +242,27 @@ const router = new Router({
             path: "/me/fund", //资金明细
             name: "Fund",
             meta: { id: 5.2 },
-            component: () => import("views/Me/Fund")
+            component: () => import("views/Me/Fund"),
+            children: [
+                {
+                    path: "/me/fund/", //OTC资金明细
+                    name: "FundOtc",
+                    meta: { id: 5.21 },
+                    component: () => import("views/Me/Fund/Otc")
+                },
+                {
+                    path: "/me/fund/wallet", //钱包资金明细
+                    name: "FundWallet",
+                    meta: { id: 5.22, type: "sub" },
+                    component: () => import("views/Me/Fund/Wallet")
+                }
+            ]
+        },
+        {
+            path: "/me/fund/:orderId", //账户设置
+            name: "Detail",
+            meta: { id: 5.23 },
+            component: () => import("views/Me/Fund/Detail")
         },
         {
             path: "/me/msg", //消息中心
@@ -245,18 +271,16 @@ const router = new Router({
             component: () => import("views/Me/Msg"),
             children: [
                 {
-                    path: "/me/msg",//系统消息
+                    path: "/me/msg", //系统消息
                     name: "SysMsg",
                     meta: { id: 5.31 },
-                    component: () =>
-                        import("views/Me/Msg/Sys")
+                    component: () => import("views/Me/Msg/Sys")
                 },
                 {
                     path: "/me/msg/notic", //重置
                     name: "NoticMsg",
-                    meta: { id: 5.32 },
-                    component: () =>
-                        import("views/Me/Msg/Notic")
+                    meta: { id: 5.32, type: "sub" },
+                    component: () => import("views/Me/Msg/Notic")
                 }
             ]
         },

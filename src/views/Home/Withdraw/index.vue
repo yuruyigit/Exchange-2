@@ -1,7 +1,7 @@
 <template>
-  <div class="msg">
+  <div class="otc">
     <NavBar :title="title" fixed showL @clickLeft="clickLeft"/>
-    <div class="msg_wrapper">
+    <div class="otc_wrapper">
       <transition :name="transitionName">
         <router-view/>
       </transition>
@@ -16,18 +16,16 @@ export default {
     return {
       transitionName: "slide-left",
       title: [
-        { title: "系统消息", url: "/me/msg", left: 0 },
-        { title: "公告消息", url: "/me/msg/notic", left: 1 }
+        { title: "OTC交易", url: "/Withdraw", left: 0 },
+        { title: "钱包转账", url: "/Withdraw/wallet", left: 1 }
       ]
     };
   },
 
-  components: {
-    NavBar
-  },
+  components: { NavBar },
   methods: {
     clickLeft() {
-      this.$router.push("/me");
+      this.$router.push("/");
     }
   },
   watch: {

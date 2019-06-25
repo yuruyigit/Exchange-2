@@ -1,6 +1,14 @@
 @import '~assets/stylus/variable.styl';
 .fund {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &_wrap {
+        width: 100%;
+    }
     &_list {
+        width: 100%;
+        height: calc(100vh - 46px);
         &_single {
             height: 86px;
             padding: 0 16px;
@@ -15,6 +23,7 @@
                         &:first-child {
                             font-size: 16px;
                             color: $color3;
+                            margin-right: 15px;
                         }
                         &:last-child {
                             font-size: 14px;

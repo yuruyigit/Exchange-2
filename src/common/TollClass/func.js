@@ -590,6 +590,25 @@ function toFixedsPic(num, extent = 2) {
     }
     return toThousands(num.toFixed(extent));
 }
+//函数节流
+function throttle(method, delay = 100, duration = 300) {
+    var timer = null;
+    var begin = new Date();
+    return function() {
+        var context = this,
+            args = arguments;
+        var current = new Date();
+        clearTimeout(timer);
+        if (current - begin >= duration) {
+            method.apply(context, args);
+            begin = current;
+        } else {
+            timer = setTimeout(function() {
+                method.apply(context, args);
+            }, delay);
+        }
+    };
+}
 
 export {
     getDataSingle,
@@ -622,5 +641,6 @@ export {
     isNormal,
     IsColor,
     toThousands,
-    toFixedsPic
+    toFixedsPic,
+    throttle
 };

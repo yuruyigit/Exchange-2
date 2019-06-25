@@ -60,7 +60,7 @@ export default {
   components: {},
   methods: {
     _initPage() {
-      if (this.$route.name == "Wallet" || this.$route.name == 'NoticMsg') {
+      if (this.$route.meta.type == "sub") {
         this.tabClick(1);
       }
     },

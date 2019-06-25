@@ -2,7 +2,7 @@ export default {
     // 测试地址
     testENV: {
         name: "test",
-        httpApiTest: "http://192.168.50.67:8183",
+        httpApi: "http://192.168.50.67:8183",
         uploadApi:"http://upload.bit2019.com",
         TVsocket: "ws://192.168.50.71:8800/ws",
         testSocket: "wss://real.okex.com:10442/ws/v3"
