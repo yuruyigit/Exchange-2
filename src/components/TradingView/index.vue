@@ -146,7 +146,9 @@ export default {
           "control_bar",
           "edit_buttons_in_legend",
           "countdown",
-          "right_bar_stays_on_scroll"
+          "right_bar_stays_on_scroll",
+          "legend_context_menu",
+          "edit_buttons_in_legend"
         ],
         enabled_features: [
           "dont_show_boolean_study_arguments",
@@ -184,6 +186,7 @@ export default {
           "mainSeriesProperties.candleStyle.borderDownColor": "#F66464",
           "mainSeriesProperties.candleStyle.wickDownColor": "#F66464",
           "paneProperties.legendProperties.showLegend": false,
+          "scalesProperties.showLeftScale": false,
           "symbolWatermarkProperties.color": "rgba(0, 0, 0, 0)"
         },
         loading_screen: {
@@ -203,24 +206,36 @@ export default {
       console.log(this.tvWidget.chart().getShapeById("MACD"));
     },
     createStudy(tvWidget) {
-      tvWidget
-        .chart()
-        .createStudy("Moving Average Exponential", false, false, [5], null, {
-          "plot.color": "#989898",
-          "plot.linewidth": 1
-        });
-      tvWidget
-        .chart()
-        .createStudy("Moving Average Exponential", false, false, [10], null, {
-          "plot.color": "#bc8b32",
-          "plot.linewidth": 1
-        });
-      tvWidget
-        .chart()
-        .createStudy("Moving Average Exponential", false, false, [30], null, {
-          "plot.color": "#cf30af",
-          "plot.linewidth": 1
-        });
+      let mas = [
+        {
+          day: 5,
+          color: "#821f68"
+        },
+        {
+          day: 10,
+          color: "#5c7798"
+        },
+        {
+          day: 30,
+          color: "#397d51"
+        },
+        {
+          day: 60,
+          color: "#60407f"
+        }
+      ];
+      mas.forEach(item => {
+        tvWidget.createStudy(
+          "Moving Average",
+          false,
+          false,
+          [item.day],
+          entity => {
+            widget.MAStudies.push(entity);
+          },
+          { "plot.color": item.color }
+        );
+      });
     },
     clickBtn(resolution) {
       resolution = resolution.toString();

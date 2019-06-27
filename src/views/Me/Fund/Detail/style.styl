@@ -1,0 +1,137 @@
+@import '~assets/stylus/variable.styl';
+.detail {
+    .nav_right {
+        font-size: 16px;
+        color: $blue;
+    }
+    &_top {
+        padding: 16px;
+    }
+    &_titel {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h2 {
+            font-size: 18px;
+            color: $color3;
+        }
+        p {
+            font-size: 14px;
+            span {
+                color: $color3;
+                &:first-child {
+                    color: $color9;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+    &_card {
+        width: 100%;
+        height: 162px;
+        background-color: $bgMain;
+        border-radius: 6px;
+        padding: 14px 16px;
+        .cardTop {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &_left {
+                p:first-child {
+                    color: $color9;
+                }
+            }
+            &_right {
+                color: #F93C34;
+            }
+            p {
+                padding: 4px 0;
+                font-size: 14px;
+                &.big {
+                    font-size: 20px;
+                }
+            }
+        }
+        .cardBot {
+            height: 88px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $color9;
+            font-size: 14px;
+            &_right {
+                text-align: right;
+            }
+            p {
+                padding: 4px 0;
+            }
+        }
+    }
+    .card_tips {
+        font-size: 11px;
+        color: $color9;
+        line-height: 18px;
+        padding-top: 12px;
+    }
+    &_bot {
+        padding: 0 16px;
+        h2 {
+            font-size: 18px;
+            height: 52px;
+            padding-top: 17px;
+        }
+        &_info {
+            li {
+                height: 56px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid $colorE;
+                .copy {
+                    margin-left: 16px;
+                    width: 36px;
+                    height: 18px;
+                    border-radius: 4px;
+                    color: $write;
+                    font-size: 13px;
+                    background: linear-gradient(left, #00BFDE, $blue);
+                }
+                p {
+                    display: flex;
+                    align-items: center;
+                    font-size: 13px;
+                    color: $color9;
+                    &:last-child {
+                        font-size: 15px;
+                        color: $color3;
+                    }
+                }
+            }
+        }
+    }
+    &_tips {
+        font-size: 11px;
+        color: $color9;
+        padding-top: 24px;
+        text-align: center;
+    }
+    &_btn {
+        padding: 32px 16px;
+        display: flex;
+        justify-content: space-between;
+        button {
+            width: 164px;
+            height: 44px;
+            font-size: 16px;
+            color: $write;
+            background: $blue;
+            border-radius: 6px;
+            &.cancel {
+                background-color: $color12;
+                color: $color6;
+            }
+        }
+    }
+}

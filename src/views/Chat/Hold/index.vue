@@ -1,6 +1,12 @@
 <template>
   <div class="hold">
-    <ul class="hold_single" v-for="(item,index) in List" :key="index">
+    <router-link
+      class="hold_single"
+      tag="ul"
+      v-for="(item,index) in List"
+      :key="index"
+      :to="`/chat/hold/${index}`"
+    >
       <li class="top">
         <p class="top_l">
           <span class="big">ETH</span>
@@ -12,7 +18,7 @@
         </p>
         <p class="top_btn">
           <span :class="isColor(index)">-18.76</span>
-          <button @click="showDialog">平仓</button>
+          <button @click="closeOut">平仓</button>
         </p>
       </li>
       <li class="bot">
@@ -33,13 +39,14 @@
           <span>止盈价</span>
         </p>
       </li>
-    </ul>
+    </router-link>
   </div>
 </template>
 
 <script>
 import iconBuy from "Images/chat/icon_buy.png";
 import iconSale from "Images/chat/icon_sale.png";
+import { setTimeout } from "timers";
 export default {
   props: {
     showDialog: {
@@ -54,12 +61,23 @@ export default {
   },
   components: {},
   methods: {
+    closeOut() {
+      this.showDialog({
+        title: "平仓"
+      });
+    },
     isBuy(type) {
       if (type % 3) {
         return iconBuy;
       } else {
         return iconSale;
       }
+    },
+    refresh(done) {
+      console.log("refresh");
+      setTimeout(() => {
+        done();
+      }, 1000);
     },
     isColor(num) {
       if (num % 2) {

@@ -12,7 +12,7 @@
         </p>
         <p class="top_btn">
           <span :class="isColor(index)">-18.76</span>
-          <button>撤单</button>
+          <button @click="closeOut">撤单</button>
         </p>
       </li>
       <li class="bot">
@@ -41,6 +41,12 @@
 import iconBuy from "Images/chat/icon_buy.png";
 import iconSale from "Images/chat/icon_sale.png";
 export default {
+  props: {
+    showDialog: {
+      type: Function,
+      required: true
+    }
+  },
   data() {
     return {
       List: new Array(10)
@@ -48,6 +54,11 @@ export default {
   },
   components: {},
   methods: {
+    closeOut() {
+      this.showDialog({
+          title:'撤单'
+      });
+    },
     isBuy(type) {
       if (type % 3) {
         return iconBuy;
@@ -55,6 +66,13 @@ export default {
         return iconSale;
       }
     },
+    refresh(done) {
+      console.log("refresh");
+      setTimeout(() => {
+        done();
+      }, 1000);
+    },
+
     isColor(num) {
       if (num % 2) {
         return "color-red1";

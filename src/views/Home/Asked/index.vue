@@ -40,7 +40,7 @@ export default {
       }
     },
     clickLeft() {
-      this.$router.push("/guide");
+      this.$router.back();
     }
   }
 };

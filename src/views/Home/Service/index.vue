@@ -77,7 +77,7 @@ export default {
       }, 1000);
     },
     clickLeft() {
-      this.$router.push("/");
+      this.$router.back();
     },
     onRefresh() {
       setTimeout(() => {

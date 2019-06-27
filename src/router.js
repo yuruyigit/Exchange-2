@@ -216,7 +216,12 @@ const router = new Router({
                 }
             ]
         },
-
+        {
+            path: "/chat/hold/:id", //持仓详情
+            name: "HoldDetail",
+            meta: { id: 4.3 },
+            component: () => import("views/Chat/HoldDetail")
+        },
         {
             path: "/chat/history", //持仓历史
             name: "ChatHistory",
@@ -259,9 +264,15 @@ const router = new Router({
             ]
         },
         {
-            path: "/me/fund/:orderId", //账户设置
-            name: "Detail",
+            path: "/me/fund/status/:orderId", //账户设置
+            name: "Status",
             meta: { id: 5.23 },
+            component: () => import("views/Me/Fund/Status")
+        },
+        {
+            path: "/me/fund/detail/:orderId", //账户设置
+            name: "Detail",
+            meta: { id: 5.24 },
             component: () => import("views/Me/Fund/Detail")
         },
         {

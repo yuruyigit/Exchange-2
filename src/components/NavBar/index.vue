@@ -5,7 +5,9 @@
         <van-icon v-show="showL" class="back_icon" @click="clickLeft" name="arrow-left"/>
       </div>
       <div class="nav_bar_c">{{title}}</div>
-      <div class="nav_bar_r">{{showR?right:''}}</div>
+      <div @click="clickRight"  class="nav_bar_r">
+        <slot name="right"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -49,6 +51,11 @@ export default {
   methods: {
     clickLeft(e) {
       this.$emit("clickLeft");
+      e.preventDefault();
+    },
+    clickRight(e) {
+      console.log("right");
+      this.$emit("clickRight");
       e.preventDefault();
     },
     isClass(fixed, border) {

@@ -44,12 +44,18 @@
         </div>
         <div class="cont">
           <transition :name="transitionName">
-            <router-view :showDialog="showDialog"/>
+            <router-view ref="child" :showDialog="showDialog"/>
           </transition>
         </div>
       </div>
     </div>
-    <van-dialog v-model="show" title="确认平仓" show-cancel-button class="customDialog">
+    <van-dialog
+      v-model="show"
+      :title="`确认${dialogData.title}`"
+      show-cancel-button
+      :beforeClose="beforeClose"
+      class="customDialog"
+    >
       <p class="order">订单编号：123456</p>
       <ul class="hold_dialog">
         <li>
@@ -77,7 +83,8 @@ export default {
       active: 0,
       styls: { left: 0 },
       transitionName: "slide-left",
-      show: false
+      show: false,
+      dialogData: {}
     };
   },
   created() {
@@ -85,7 +92,8 @@ export default {
   },
   components: { NavBar },
   methods: {
-    showDialog() {
+    showDialog(data) {
+      this.dialogData = data;
       this.show = true;
     },
     _initPage() {
@@ -97,6 +105,14 @@ export default {
       this.styls = {
         left: index * 33 + "%"
       };
+    },
+    beforeClose(action, done) {
+      if (action == "cancel") {
+        done();
+      } else {
+        this.$refs.child.refresh(done);
+      }
+      return false;
     }
   },
   watch: {

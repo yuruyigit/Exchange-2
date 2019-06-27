@@ -147,7 +147,7 @@ export default {
   components: { NavBar },
   methods: {
     clickLeft() {
-      this.$router.push("/");
+      this.$router.back();
     },
     toSwiper(){
         this.$router.push('/guide/swiper')

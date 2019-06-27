@@ -1,7 +1,13 @@
 <template>
   <div class="fund_list">
     <ScrollH pulldown pullup @pullDown="pullDown" @pullUp="pullUp" :data="List">
-      <router-link tag="ul" class="fund_list_single border-1px" v-for="(item,index) in List" :to="`/me/fund/${item}`" :key="item+index">
+      <router-link
+        tag="ul"
+        class="fund_list_single border-1px"
+        v-for="(item,index) in List"
+        :to="`/me/fund/${item == 1? 'detail/':'status/'}${item}`"
+        :key="item+index"
+      >
         <li class="left">
           <p class="left_title">
             <span>OTC交易(BEEPAY充币)</span>

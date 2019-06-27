@@ -52,7 +52,8 @@ export default {
           url: "/auth/authorize",
           data: {
             loginName: this.loginData.account,
-            loginPwd: this.$md5(this.loginData.pwd)
+            loginPwd: this.$md5(this.loginData.pwd),
+            type: 1
           },
           method: "put",
           pro: true
