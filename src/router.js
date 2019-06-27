@@ -27,6 +27,12 @@ const router = new Router({
             }
         },
         {
+            path: "/scroll_test", //首页
+            name: "scrollTest",
+            meta: { id: 1 },
+            component: () => import("views/scroll_test.vue")
+        },
+        {
             path: "/service", //联系客服
             name: "Service",
             meta: { id: 1.1 },
